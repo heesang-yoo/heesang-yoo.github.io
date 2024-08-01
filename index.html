@@ -55,7 +55,9 @@
             text-decoration: none; /* 밑줄 제거 */
         }
         a:hover {
+            color: rgb(51, 0, 255);
             text-decoration: underline; /* 마우스 오버 시 밑줄 표시 */
+            font-style: bold;
         }
         /* 아이콘 이미지 스타일 */
         .icon {
@@ -67,9 +69,19 @@
             margin-top: 10px; /* 사진과 아이콘 사이에 여백 추가 */
         }
         .video-container {
-            flex: 1;
-            margin-left: 20px;
-            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px; /* 비디오 사이 간격 */
+        }
+        .video-box {
+            width: 48%; /* 컨테이너 너비의 48%를 차지하도록 설정 */
+        }
+
+        .video-title {
+            text-align: center;
+            margin-bottom: 10px; /* 제목 아래 마진 추가 */
+            font-family: 'Times New Roman', Times, serif;
         }
         iframe {
             width: 48%;
@@ -101,152 +113,251 @@
                 </div>
                 <div id="sidebar" style="width:25%" class="column">
                     <figure class="image" style="text-align:center">
-                        <a href="figure/PHOTO.jpg">
+                        <a2 href="figure/PHOTO.jpg">
                             <img style="width:240px" src="figure/PHOTO.jpg"/>
-                        </a>
+                        </a2>
                     </figure>
                     <div class="icon-container">
                         <a href="https://scholar.google.co.kr/citations?user=WE6J39QAAAAJ&amp;hl=ko">
                             <img src="figure/scholar.png" alt="Google Scholar" class="icon"/>
-                            &nbsp;/&nbsp;
                         </a>
+                        &nbsp;/&nbsp;
                         <a href="https://www.linkedin.com/in/heesang-yoo-963267172/">
                             <img src="figure/linkedin.png" alt="LinkedIn" class="icon"/>
+                        </a>
+                        &nbsp;/&nbsp;
+                        <a href="https://www.linkedin.com/in/heesang-yoo-963267172/overlay/1713720810687/single-media-viewer/?profileId=ACoAACj5EpsBz6rEXQVwXBcgMFebYMZsXgq1_wE">
+                            <img src="figure/cv.png" alt="cv" class="icon"/>
                         </a>
                     </div>
                 </div>
             </div>
-            <br/><span style="color: rgb(0, 0, 0);"><h2 id="publications-published" class=""><strong>Publication International Journal (Published)</strong></h2></span>
+            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="publications-published" class=""><strong>Publication International Journal (Published)</strong></h2></span>
             <hr id="publications-divider"/>
             <ol type="1" id="published-list" class="numbered-list" start="1">
                 <li>
-                    <strong>Yoo, H. S., Jo, Y. B., &amp; Kim, E. S. (2024).</strong> Comparative study of WCSPH, EISPH and Explicit Incompressible-Compressible SPH (EICSPH) for Multi-Phase Flow with High Density Difference. 
-                    <em>Journal of Computational Physics</em>, 112930. <strong>(JCR 4.5%)</strong>
-                    <a href="https://www.journal-link.com"><span style="color: rgb(0, 0, 255);">Paper</span></a>
+                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
+                        <strong style="font-size: 1.0em; font-weight: bold;">Yoo, H. S., Jo, Y. B., &amp; Kim, E. S. (2024).</strong> 
+                        Comparative study of WCSPH, EISPH and Explicit Incompressible-Compressible SPH (EICSPH) for Multi-Phase Flow with High Density Difference.
+                        <em>Journal of Computational Physics</em>, 112930. <strong>(JCR 4.5%)</strong>
+                        <a href="https://doi.org/10.1016/j.jcp.2024.112930"><span style="color: rgb(0, 0, 255);">Link</span></a>
+                    </div>
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/your_video_id1" frameborder="0" allowfullscreen></iframe>
-                        <iframe src="https://www.youtube.com/embed/your_video_id2" frameborder="0" allowfullscreen></iframe>
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                    </div>
+                </li>
+                
+                <li>
+                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
+                        <strong>Yoo, H. S., Jo, Y. B., Kim, J. W., Kim, E. S., &amp; Choi, T. S. (2023).</strong> 
+                        A simple Eulerian–Lagrangian weakly compressible smoothed particle hydrodynamics method for fluid flow and heat transfer. 
+                        <em>International Journal for Numerical Methods in Engineering</em>, 
+                        <em>124</em>(4), 928-958. <a href="https://doi.org/10.1002/nme.7197">(Featured Cover)</a>
+                        <a href="https://doi.org/10.1002/nme.7148"><span style="color: rgb(0, 0, 255);">Link</span></a>
+                    </div>
+                     <div class="video-container">
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
                     </div>
                 </li>
                 <li>
-                    <strong>Yoo, H. S., Jo, Y. B., Kim, J. W., Kim, E. S., &amp; Choi, T. S. (2023).</strong> 
-                    A simple Eulerian–Lagrangian weakly compressible smoothed particle hydrodynamics method for fluid flow and heat transfer. 
-                    <em>International Journal for Numerical Methods in Engineering</em>, 
-                    <em>124</em>(4), 928-958. <strong>(Featured Cover)</strong>
-                    <a href="https://www.journal-link.com">Read more</a>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/your_video_id1" frameborder="0" allowfullscreen></iframe>
-                        <iframe src="https://www.youtube.com/embed/your_video_id2" frameborder="0" allowfullscreen></iframe>
+                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
+                        Jo, Y. B., Park, S. H., <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2022). 
+                        GPU-based SPH-DEM Method to Examine the Three-Phase Hydrodynamic Interactions between Multiphase Flow and Solid Particles. 
+                        <em>International Journal of Multiphase Flow</em>, <em>153</em>, 104125.
+                        <a href="https://doi.org/10.1016/j.ijmultiphaseflow.2022.104125"><span style="color: rgb(0, 0, 255);">Link</span></a>
+                    </div>
+                     <div class="video-container">
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
                     </div>
                 </li>
                 <li>
-                    Jo, Y. B., Park, S. H., <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2022). 
-                    GPU-based SPH-DEM Method to Examine the Three-Phase Hydrodynamic Interactions between Multiphase Flow and Solid Particles. 
-                    <em>International Journal of Multiphase Flow</em>, <em>153</em>, 104125.
-                    <a href="https://www.journal-link.com"><span style="color: rgb(0, 0, 255);">Paper</span></a>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/your_video_id1" frameborder="0" allowfullscreen></iframe>
-                        <iframe src="https://www.youtube.com/embed/your_video_id2" frameborder="0" allowfullscreen></iframe>
+                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
+                        <strong>Yoo, H. S.</strong>, Choi, H. Y., Kim, T. H., &amp; Kim, E. S. (2022). 
+                        Effect of wettability on the water entry of spherical projectiles: Numerical analysis using smoothed particle hydrodynamics. 
+                        <em>AIP Advances</em>, <em>12</em>(3). <strong>(Editor’s Pick)</strong>
+                        <a href="https://doi.org/10.1063/5.0072710"><span style="color: rgb(0, 0, 255);">Link</span></a>
+                    </div>
+                     <div class="video-container">
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
                     </div>
                 </li>
                 <li>
-                    <strong>Yoo, H. S.</strong>, Choi, H. Y., Kim, T. H., &amp; Kim, E. S. (2022). 
-                    Effect of wettability on the water entry of spherical projectiles: Numerical analysis using smoothed particle hydrodynamics. 
-                    <em>AIP Advances</em>, <em>12</em>(3). <strong>(Editor’s Pick)</strong>
-                    <a href="https://www.journal-link.com"><span style="color: rgb(0, 0, 255);">Paper</span></a>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/your_video_id1" frameborder="0" allowfullscreen></iframe>
-                        <iframe src="https://www.youtube.com/embed/your_video_id2" frameborder="0" allowfullscreen></iframe>
+                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
+                        Park, S. H., Jo, Y. B., Ahn, Y., Choi, H. Y., Choi, T. S., Park, S. S., 
+                        <strong>Yoo, H. S.</strong>, Kim, J.K. &amp; Kim, E. S. (2020). 
+                        Development of multi-GPU–based smoothed particle hydrodynamics code for nuclear thermal hydraulics and safety: potential and challenges. 
+                        <em>Frontiers in Energy Research</em>, <em>8</em>, 86.
+                        <a href="https://doi.org/10.3389/fenrg.2020.00086"><span style="color: rgb(0, 0, 255);">Link</span></a>
                     </div>
                 </li>
                 <li>
-                    Park, S. H., Jo, Y. B., Ahn, Y., Choi, H. Y., Choi, T. S., Park, S. S., 
-                    <strong>Yoo, H. S.</strong>, Kim, J.K. &amp; Kim, E. S. (2020). 
-                    Development of multi-GPU–based smoothed particle hydrodynamics code for nuclear thermal hydraulics and safety: potential and challenges. 
-                    <em>Frontiers in Energy Research</em>, <em>8</em>, 86.
-                    <a href="https://www.journal-link.com"><span style="color: rgb(0, 0, 255);">Paper</span></a>
-                </li>
-                <li>
-                    <strong>Yoo, H. S.</strong>, Yoo, S. H., &amp; Kim, E. S. (2019). 
-                    Heat transfer enhancement in dry cask storage for nuclear spent fuel using additive high density inert gas. 
-                    <em>Annals of Nuclear Energy</em>, <em>132</em>, 108-118.
-                    <a href="https://www.journal-link.com"><span style="color: rgb(0, 0, 255);">Paper</span></a>
+                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
+                        <strong>Yoo, H. S.</strong>, Yoo, S. H., &amp; Kim, E. S. (2019). 
+                        Heat transfer enhancement in dry cask storage for nuclear spent fuel using additive high density inert gas. 
+                        <em>Annals of Nuclear Energy</em>, <em>132</em>, 108-118.
+                        <a href="https://doi.org/10.1016/j.anucene.2019.04.018"><span style="color: rgb(0, 0, 255);">Link</span></a>
+                    </div>
                 </li>
             </ol>
-            <br/><span style="color: rgb(0, 0, 0);"><h2 id="publications-in-review" class=""><strong>Publication International Journal (In preparation or under review)</strong></h2></span>
+            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="publications-in-review" class=""><strong>Publication International Journal (In preparation or under review)</strong></h2></span>
             <hr id="in-review-divider"/>
             <ol type="1" id="in-review-list" class="numbered-list" start="1">
                 <li>
-                    <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2024). Numerical simulation of corium spreading phenomena using SPH method. 
-                    Nuclear Engineering Technology. <strong>(under review)</strong>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/your_video_id1" frameborder="0" allowfullscreen></iframe>
-                        <iframe src="https://www.youtube.com/embed/your_video_id2" frameborder="0" allowfullscreen></iframe>
+                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
+                        <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2024). Numerical simulation of corium spreading phenomena using SPH method. 
+                        Nuclear Engineering Technology. <strong>(under review)</strong>
                     </div>
-                </li>
-                <li>
-                    Ahn, Y. L.,<strong>Yoo, H. S.</strong>, Choi, N. J., &amp; Kim, E. S. (2024). Dynamic Load Balancing of Multi-GPU Paralleli
-                    zation for VULCANO VE-U7 Corium Spreading Analysis using SOPHIA. Nuclear Technology <strong>(under review)</strong>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/your_video_id1" frameborder="0" allowfullscreen></iframe>
-                        <iframe src="https://www.youtube.com/embed/your_video_id2" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </li>
-                <li>
-                    Kim, J. H, <strong>Yoo, H. S.</strong>, Jo, Y. B, Park, S. S, &amp; Kim, E. S. (2024). GPU-Parallelized SPH Solver for Accurate 
-                    Simulation of Shaped Charge Jet Penetration in Concrete Structures, Defence Technology <strong>(under review)</strong>
-                    <div class="video-container">
-                        <video controls width="48%" height="250px">
-                            <source src="video/video1.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <video controls width="48%" height="250px">
-                            <source src="video/video2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </li>
-                <li>
-                    Kim, J. H, <strong>Yoo, H. S.</strong>, Jo, Y. B, &amp; Kim, E. S. (2024). Simulation on Nuclear Reactor Cavity Analysis during
-                     External Steam Explosion using Unified SPH. Progress of Nuclear Energy. <strong>(in preparation)</strong>
                      <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/your_video_id1" frameborder="0" allowfullscreen></iframe>
-                        <iframe src="https://www.youtube.com/embed/your_video_id2" frameborder="0" allowfullscreen></iframe>
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
+                        Ahn, Y. L.,<strong>Yoo, H. S.</strong>, Choi, N. J., &amp; Kim, E. S. (2024). Dynamic Load Balancing of Multi-GPU Paralleli
+                        zation for VULCANO VE-U7 Corium Spreading Analysis using SOPHIA. Nuclear Technology <strong>(under review)</strong>
+                    </div>
+                     <div class="video-container">
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
+                        Kim, J. H, <strong>Yoo, H. S.</strong>, Jo, Y. B, Park, S. S, &amp; Kim, E. S. (2024). GPU-Parallelized SPH Solver for Accurate 
+                        Simulation of Shaped Charge Jet Penetration in Concrete Structures, Defence Technology <strong>(under review)</strong>
+                    </div>
+                    <div class="video-container">
+                        <div class="video-box">
+                            <h3 class="video-title">Shaped Charge Jet Penetration in Concrete Structures</h3>
+                            <video controls width="100%" height="300px">
+                                <source src="video/video1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="video-box">
+                            <h3 class="video-title">Shaped Charge Jet Penetration in Concrete Structures</h3>
+                            <video controls width="100%" height="300px">
+                                <source src="video/video2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </li>
+                
+                <li>
+                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
+                        Kim, J. H, <strong>Yoo, H. S.</strong>, Jo, Y. B, &amp; Kim, E. S. (2024). Simulation on Nuclear Reactor Cavity Analysis during
+                        External Steam Explosion using Unified SPH. Progress of Nuclear Energy. <strong>(in preparation)</strong>
+                    </div>
+                      <div class="video-container">
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
                     </div>
                     </li>
                 <li>
-                    <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2024). Efficient GPU parallelized Matrix-Free Implicit Viscosity Solver for Highly 
-                    Viscous Fluids in Smoothed Particle Hydrodynamics. Engineering with Computers <strong>(in preparation)</strong>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/your_video_id1" frameborder="0" allowfullscreen></iframe>
-                        <iframe src="https://www.youtube.com/embed/your_video_id2" frameborder="0" allowfullscreen></iframe>
+                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
+                        <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2024). Efficient GPU parallelized Matrix-Free Implicit Viscosity Solver for Highly 
+                        Viscous Fluids in Smoothed Particle Hydrodynamics. Engineering with Computers <strong>(in preparation)</strong>
                     </div>
-                </li>
-                <li>
-                    <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2024). Numerical simulation of Janus droplet formation in microfluidics system using 
-                    Smoothed Particle Hydrodynamics. Chemical Engineering Science. <strong>(in preparation)</strong>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/your_video_id1" frameborder="0" allowfullscreen></iframe>
-                        <iframe src="https://www.youtube.com/embed/your_video_id2" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </li>
-                <li>
-                    <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2025). Numerical simulation of performance in EU-APR 1400 core catcher using SPH method.
-                     Nuclear Engineering Technology. <strong>(in preparation)</strong>
                      <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/your_video_id1" frameborder="0" allowfullscreen></iframe>
-                        <iframe src="https://www.youtube.com/embed/your_video_id2" frameborder="0" allowfullscreen></iframe>
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
+                        <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2024). Numerical simulation of Janus droplet formation in microfluidics system using 
+                        Smoothed Particle Hydrodynamics. Chemical Engineering Science. <strong>(in preparation)</strong>
+                    </div>
+                     <div class="video-container">
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
+                        <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2025). Numerical simulation of performance in EU-APR 1400 core catcher using SPH method.
+                        Nuclear Engineering Technology. <strong>(in preparation)</strong>
+                    </div>
+                      <div class="video-container">
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
+                        <div class="video-box">
+                            <h3 class="video-title">Coming Soon</h3>
+                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
+                        </div>
                     </div>
                 </li>
             </ol>
-            <br/><span style="color: rgb(0, 0, 0);"><h2 id="conference-international" class=""><strong>Proceeding International Conference</strong></h2></span>
+            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="conference-international" class=""><strong>Proceeding International Conference</strong></h2></span>
             <hr id="conference-divider"/>
             <ol type="1" id="conference-list" class="numbered-list" start="1">
                 <li><strong>Yoo, H. S.</strong>, Jo, Y. B., &amp; Kim, E. S. (2022) GPU-accelerated Explicit Incompressible-Compressible SPH for multi-phase flow with large density difference, <em>Proceedings of the SPHERIC Workshop, Piazza Roma, Catania. Italy</em></li>
                 <li><strong>Yoo, H. S.</strong>, Yoo, S. H., &amp; Kim, E. S. (2018) Heat Transfer Enhancement of Dry Cask Storage System Using Binary Helium and Heavy Inert Gas Mixture, <em>The Eleventh Korea-Japan Symposium on Nuclear Thermal Hydraulics and Safety</em>, Busan, Korea, November 18-21, 2018</li>
                 <li>Song, M. S., <strong>Yoo, H. S.</strong>, Kim, J. H., &amp; Kim, E. S. (2017). The investigation of flow characteristics in 3-pin wire-wrapped fuel bundle using laser-based measurement techniques. <em>17th International Topical Meeting on Nuclear Reactor Thermal Hydraulics (NURETH 17)</em>, Xi'an, China, September 3–8, 2017.</li>
             </ol>
-            <br/><span style="color: rgb(0, 0, 0);"><h2 id="conference-domestic" class=""><strong>Proceeding Domestic Conference</strong></h2></span>
+            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="conference-domestic" class=""><strong>Proceeding Domestic Conference</strong></h2></span>
             <hr id="domestic-conference-divider"/>
             <ol type="1" id="domestic-conference-list" class="numbered-list" start="1">
                 <li><strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2024). Numerical Investigation of Corium Spreading Phenomena using Smoothed Particle Hydrodynamics, Transactions of the Korean Nuclear Society Spring Meeting, Jeju, Korea, May 9-10, 2024 <strong>(Best Paper)</strong></li>
@@ -255,14 +366,14 @@
                 <li><strong>Yoo, H. S.</strong>, Kim, T. H., &amp; Kim, E. S. (2021). Numerical Simulation on Spreading and Impact Behavior of a Single Droplet Using Smoothed Particle Hydrodynamics. <em>Transactions of the Korean Nuclear Society Virtual Autumn Meeting</em>, October 21-22, 2021</li>
                 <li><strong>Yoo, H. S.</strong>, Kim, E. S., &amp; Yoo, S. H. (2018). Thermal Performance Enhancement of Dry Cask Storage System Using Helium-Based Binary Gaseous Mixture. <em>Transactions of the Korean Nuclear Society Autumn Meeting</em>, Yeosu, Korea, October 25-26, 2018 <strong>(Best Poster)</strong></li>
             </ol>
-            <br/><span style="color: rgb(0, 0, 0);"><h2 id="invited-talk" class=""><strong>Invited Talk</strong></h2></span>
+            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="invited-talk" class=""><strong>Invited Talk</strong></h2></span>
             <hr id="invited-talk-divider"/>
             <ol type="1" id="invited-talk-list" class="numbered-list" start="1">
                 <li>Multiphase SPH for various applications, Inha University, April, 05, 2024</li>
                 <li>Multiphase ALE-SPH for versatile approaches on highly viscous corium simulation, SNU Nuclear Research Institute for Future Technology and Policy, February, 23, 2024</li>
                 <li>Research Activities at SNU during PhD Program, “Multiphase ALE-SPH for versatile approaches on highly viscous corium simulation”, Hanyang University, February, 2, 2024</li>
             </ol>
-            <br/><span style="color: rgb(0, 0, 0);"><h2 id="education" class=""><strong>Education</strong></h2></span>
+            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="education" class=""><strong>Education</strong></h2></span>
             <hr id="education-divider"/>
             <ul id="education-list" class="bulleted-list">
                 <li style="list-style-type:disc"><strong>Ph.D.</strong> Nuclear Engineering, Seoul National University (SNU) 2024
@@ -277,7 +388,7 @@
                     </ul>
                 </li>
             </ul>
-            <br/><span style="color: rgb(0, 0, 0);"><h2 id="career" class=""><strong>Career</strong></h2></span>
+            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="career" class=""><strong>Career</strong></h2></span>
             <hr id="career-divider"/>
             <ul id="career-list" class="bulleted-list">
                 <li style="list-style-type:disc"><strong>Postdoctoral Researcher</strong>
