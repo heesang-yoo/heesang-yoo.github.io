@@ -4,24 +4,61 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Hee Sang Yoo, Ph.D.</title>
     <style>
-        /* 여백을 설정하여 페이지 내용을 화면 중앙에 배치 */
         body {
             font-family: sans-serif;
             line-height: 1.5;
             margin: 0;
             padding: 0;
+            background-color: #f2f2f2; /* Ensure entire body gets the background color */
         }
-        /* 페이지 전체 여백 설정 */
+        .sidebar {
+            width: 200px; /* Adjust width as needed */
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            overflow: auto; /* Enables scrolling on the sidebar if too many items */
+            background-color: #f8f8f8; /* Light grey background */
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            z-index: 1000; /* Make sure the sidebar is on top of other content */
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding: 8px;
+            margin: 2px 0;
+        }
+
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
         .page {
-            padding: 10vh 16.66vw 0 16.66vw; /* 상단 여백: 10%, 좌우 여백: 1/6 화면 너비 */
+            width: 70%; /* Control width to center the page content */
+            margin: 10vh auto 0 auto; /* Vertically align the top margin and auto center horizontally */
+            background-color: #fff; /* Set the content background to white */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+            padding: 20px; /* Padding inside the content box */
+            flex-grow: 1;
         }
         header {
-            padding-bottom: 2vh; /* 제목 하단 여백 */
+            padding-bottom: 2vh;
+            background-image: url('path_to_your_cover_image.jpg'); /* Path to your cover image */
+            background-size: cover;
+            background-position: center;
         }
         .page-title {
             margin-bottom: 0.5em;
+            text-align: center;
+            padding: 20px 0; /* Padding around the title for better spacing */
+            font-size: 2.0rem;
         }
-        /* 열 레이아웃 설정 */
         .column-list {
             display: flex;
             gap: 20px;
@@ -29,73 +66,75 @@
         .column {
             box-sizing: border-box;
         }
-        /* 이미지 스타일 */
         .image img {
             max-width: 100%;
             height: auto;
         }
-        /* 수평선 스타일 */
         hr {
             margin: 1em 0;
             border: 0;
             border-top: 1px solid #ccc;
         }
-        /* 목록 스타일 */
-        ul.bulleted-list,
-        ol.numbered-list {
+        ul.bulleted-list, ol.numbered-list {
             margin: 0 0 1em 20px;
             padding: 0;
         }
         p, li {
-            margin-bottom: 0.5em; /* 줄 간격 조정 */
+            margin-bottom: 0.5em;
         }
-        /* 하이퍼링크 관련 */
         a {
             color: black;
-            text-decoration: none; /* 밑줄 제거 */
+            text-decoration: none;
         }
         a:hover {
             color: rgb(51, 0, 255);
-            text-decoration: underline; /* 마우스 오버 시 밑줄 표시 */
+            text-decoration: underline;
             font-style: bold;
         }
-        /* 아이콘 이미지 스타일 */
         .icon {
-            height: 2em; /* 글씨 크기와 동일한 높이로 설정 */
+            height: 2em;
             vertical-align: middle;
         }
         .icon-container {
-            text-align: center; /* 가운데 정렬 */
-            margin-top: 10px; /* 사진과 아이콘 사이에 여백 추가 */
+            text-align: center;
+            margin-top: 10px;
         }
         .video-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 20px; /* 비디오 사이 간격 */
+            gap: 20px;
         }
         .video-box {
-            width: 48%; /* 컨테이너 너비의 48%를 차지하도록 설정 */
+            width: 48%;
         }
-
         .video-title {
             text-align: center;
-            margin-bottom: 10px; /* 제목 아래 마진 추가 */
+            margin-bottom: 10px;
             font-family: 'Times New Roman', Times, serif;
         }
         iframe {
-            width: 48%;
+            width: 100%;
             height: 400px;
             margin-top: 10px;
             margin-bottom: 10px;
         }
-        /* 텍스트 컨테이너 스타일 */
         .text-container {
-            width: 50.0%; /* 텍스트를 왼쪽 2/3에 배치 */
+            width: 50.0%;
         }
         .flex-container {
             display: flex;
             gap: 20px;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .column-list {
+                flex-direction: column;
+            }
+
+            .sidebar, .main-content {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -131,7 +170,37 @@
                         </a>
                     </div>
                 </div>
+                <!-- <div class="sidebar">
+                    <ul>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#career">Career</a></li>
+                        <li><a href="#publications-published">Publications</a></li>
+                    </ul>
+                </div> -->
             </div>
+            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="education" class=""><strong>Education</strong></h2></span>
+            <hr id="education-divider"/>
+            <ul id="education-list" class="bulleted-list">
+                <li style="list-style-type:disc"><strong>Ph.D.</strong> <a href="https://nucleng.snu.ac.kr/">Nuclear Engineering, Seoul National University (SNU) </a><span style="float: right; font-weight: bold;">2024</span>
+                    <ul class="bulleted-list">
+                        <li style="list-style-type:circle">Advisor: <a href="https://snueslab.com/">Prof. Eung Soo Kim</a></li>
+                        <li style="list-style-type:circle">Dissertation: Multiphase ALE-SPH for Versatile Approaches on Highly Viscous Corium Simulation</li>
+                    </ul>
+                </li>
+                <li style="list-style-type:disc"><strong>B.E.</strong> <a href="https://nucleng.snu.ac.kr/">Nuclear Engineering, Seoul National University (SNU) </a> <span style="float: right; font-weight: bold;">2017</span>
+                    <ul class="bulleted-list">
+                        <li style="list-style-type:circle">Chair of the SNU Global/Domestic Education Outreaching Club</li>
+                    </ul>
+                </li>
+            </ul>
+            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="career" class=""><strong>Career</strong></h2></span>
+            <hr id="career-divider"/>
+            <ul id="career-list" class="bulleted-list">
+                <li style="list-style-type:disc"><strong>Postdoctoral Researcher</strong>
+                    <p id="career-description">Seoul National University (SNU) Nuclear Research Institute for Future Technology and Policy. <span style="float: right; font-weight: bold;">2024.3 ~ Now</span></p>
+                </li>
+            </ul>
+            <br/>
             <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="publications-published" class=""><strong>Publication International Journal (Published)</strong></h2></span>
             <hr id="publications-divider"/>
             <ol type="1" id="published-list" class="numbered-list" start="1">
@@ -153,7 +222,6 @@
                         </div>
                     </div>
                 </li>
-                
                 <li>
                     <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
                         <strong>Yoo, H. S., Jo, Y. B., Kim, J. W., Kim, E. S., &amp; Choi, T. S. (2023).</strong> 
@@ -373,28 +441,6 @@
                 <li>Multiphase ALE-SPH for versatile approaches on highly viscous corium simulation, SNU Nuclear Research Institute for Future Technology and Policy, February, 23, 2024</li>
                 <li>Research Activities at SNU during PhD Program, “Multiphase ALE-SPH for versatile approaches on highly viscous corium simulation”, Hanyang University, February, 2, 2024</li>
             </ol>
-            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="education" class=""><strong>Education</strong></h2></span>
-            <hr id="education-divider"/>
-            <ul id="education-list" class="bulleted-list">
-                <li style="list-style-type:disc"><strong>Ph.D.</strong> Nuclear Engineering, Seoul National University (SNU) 2024
-                    <ul class="bulleted-list">
-                        <li style="list-style-type:circle">Advisor: <a href="https://snueslab.com/">Prof. Eung Soo Kim</a></li>
-                        <li style="list-style-type:circle">Dissertation: Multiphase ALE-SPH for Versatile Approaches on Highly Viscous Corium Simulation</li>
-                    </ul>
-                </li>
-                <li style="list-style-type:disc"><strong>B.E.</strong> Nuclear Engineering, Seoul National University (SNU) 2017
-                    <ul class="bulleted-list">
-                        <li style="list-style-type:circle">Chair of the SNU Global/Domestic Education Outreaching Club</li>
-                    </ul>
-                </li>
-            </ul>
-            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="career" class=""><strong>Career</strong></h2></span>
-            <hr id="career-divider"/>
-            <ul id="career-list" class="bulleted-list">
-                <li style="list-style-type:disc"><strong>Postdoctoral Researcher</strong>
-                    <p id="career-description">Seoul National University (SNU) Nuclear Research Institute for Future Technology and Policy. 3 ~ Now</p>
-                </li>
-            </ul>
         </div>
     </article>
 </body>
