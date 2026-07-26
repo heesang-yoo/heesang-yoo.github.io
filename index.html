@@ -1,447 +1,1579 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Hee Sang Yoo, Ph.D.</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            line-height: 1.5;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2; /* Ensure entire body gets the background color */
-        }
-        .sidebar {
-            width: 200px; /* Adjust width as needed */
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            overflow: auto; /* Enables scrolling on the sidebar if too many items */
-            background-color: #f8f8f8; /* Light grey background */
-            padding: 20px;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-            z-index: 1000; /* Make sure the sidebar is on top of other content */
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hee Sang Yoo — Nuclear engineering researcher working on high-fidelity multiphysics simulation, particle methods, and high-performance computing.">
+  <meta name="theme-color" content="#0b1f3a">
+  <title>Hee Sang Yoo, Ph.D. | Nuclear Multiphysics & Computational Science</title>
 
-        .sidebar a {
-            text-decoration: none;
-            color: black;
-            display: block;
-            padding: 8px;
-            margin: 2px 0;
-        }
+  <style>
+    :root {
+      --navy: #0b1f3a;
+      --navy-2: #15365f;
+      --teal: #0f7b83;
+      --sky: #e8f3f6;
+      --ink: #1a2433;
+      --muted: #5d6877;
+      --line: #dfe5eb;
+      --surface: #ffffff;
+      --surface-soft: #f6f8fa;
+      --shadow: 0 18px 45px rgba(11, 31, 58, 0.10);
+      --radius: 20px;
+      --max-width: 1120px;
+    }
 
-        .sidebar a:hover {
-            background-color: #ddd;
-        }
-        .page {
-            width: 70%; /* Control width to center the page content */
-            margin: 10vh auto 0 auto; /* Vertically align the top margin and auto center horizontally */
-            background-color: #fff; /* Set the content background to white */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-            padding: 20px; /* Padding inside the content box */
-            flex-grow: 1;
-        }
-        header {
-            padding-bottom: 2vh;
-            background-image: url('path_to_your_cover_image.jpg'); /* Path to your cover image */
-            background-size: cover;
-            background-position: center;
-        }
-        .page-title {
-            margin-bottom: 0.5em;
-            text-align: center;
-            padding: 20px 0; /* Padding around the title for better spacing */
-            font-size: 2.0rem;
-        }
-        .column-list {
-            display: flex;
-            gap: 20px;
-        }
-        .column {
-            box-sizing: border-box;
-        }
-        .image img {
-            max-width: 100%;
-            height: auto;
-        }
-        hr {
-            margin: 1em 0;
-            border: 0;
-            border-top: 1px solid #ccc;
-        }
-        ul.bulleted-list, ol.numbered-list {
-            margin: 0 0 1em 20px;
-            padding: 0;
-        }
-        p, li {
-            margin-bottom: 0.5em;
-        }
-        a {
-            color: black;
-            text-decoration: none;
-        }
-        a:hover {
-            color: rgb(51, 0, 255);
-            text-decoration: underline;
-            font-style: bold;
-        }
-        .icon {
-            height: 2em;
-            vertical-align: middle;
-        }
-        .icon-container {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .video-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-        .video-box {
-            width: 48%;
-        }
-        .video-title {
-            text-align: center;
-            margin-bottom: 10px;
-            font-family: 'Times New Roman', Times, serif;
-        }
-        iframe {
-            width: 100%;
-            height: 400px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-        .text-container {
-            width: 50.0%;
-        }
-        .flex-container {
-            display: flex;
-            gap: 20px;
-        }
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .column-list {
-                flex-direction: column;
-            }
+    * { box-sizing: border-box; }
 
-            .sidebar, .main-content {
-                width: 100%;
-            }
-        }
-    </style>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 88px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--surface);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      padding: 10px 14px;
+      color: #fff;
+      background: var(--navy);
+      z-index: 9999;
+    }
+
+    .skip-link:focus { left: 8px; }
+
+    /* Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(223, 229, 235, 0.85);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+    }
+
+    .navbar {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      color: #fff;
+      background: linear-gradient(140deg, var(--navy), var(--teal));
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 17px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 9px 12px;
+      border-radius: 10px;
+      color: #344154;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--navy);
+      background: var(--surface-soft);
+    }
+
+    .menu-button {
+      display: none;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--navy);
+      background: #fff;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0 86px;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(15, 123, 131, 0.13), transparent 30%),
+        radial-gradient(circle at 12% 15%, rgba(21, 54, 95, 0.10), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, #f7fafc 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -130px;
+      bottom: -190px;
+      width: 460px;
+      height: 460px;
+      border: 1px solid rgba(15, 123, 131, 0.15);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 54px rgba(15, 123, 131, 0.04),
+        0 0 0 108px rgba(15, 123, 131, 0.025);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.55fr);
+      align-items: center;
+      gap: 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 18px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--teal);
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 22px;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(46px, 7vw, 76px);
+      font-weight: 700;
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+    }
+
+    .hero-subtitle {
+      max-width: 760px;
+      margin-bottom: 20px;
+      color: var(--navy-2);
+      font-size: clamp(20px, 2.5vw, 29px);
+      font-weight: 720;
+      line-height: 1.35;
+      letter-spacing: -0.025em;
+    }
+
+    .hero-copy {
+      max-width: 735px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 11px 17px;
+      border: 1px solid var(--navy);
+      border-radius: 12px;
+      color: #fff;
+      background: var(--navy);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 760;
+      transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(11, 31, 58, 0.15);
+    }
+
+    .button.secondary {
+      color: var(--navy);
+      background: transparent;
+      border-color: var(--line);
+    }
+
+    .profile-card {
+      position: relative;
+      padding: 14px;
+      border: 1px solid rgba(223, 229, 235, 0.95);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: var(--shadow);
+      transform: rotate(1.2deg);
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: 24px -18px -18px 24px;
+      z-index: -1;
+      border-radius: 30px;
+      background: linear-gradient(140deg, rgba(21, 54, 95, 0.18), rgba(15, 123, 131, 0.18));
+    }
+
+    .profile-card img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 20px;
+      background: #e8edf1;
+    }
+
+    .profile-caption {
+      padding: 16px 8px 8px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* Shared sections */
+    section { padding: 88px 0; }
+    section.soft { background: var(--surface-soft); }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 56px;
+      margin-bottom: 42px;
+      align-items: end;
+    }
+
+    .section-kicker {
+      margin-bottom: 10px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 5vw, 49px);
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+    }
+
+    .section-intro {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-copy p {
+      color: #3d4958;
+      font-size: 17px;
+    }
+
+    .about-copy p:last-child { margin-bottom: 0; }
+
+    .fact-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--line);
+    }
+
+    .fact-list li {
+      display: grid;
+      grid-template-columns: 105px 1fr;
+      gap: 16px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .fact-label {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .fact-value {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    /* Research */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .research-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 350px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 0 8px 26px rgba(11, 31, 58, 0.05);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .research-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 38px rgba(11, 31, 58, 0.10);
+    }
+
+    .research-visual {
+      position: relative;
+      height: 142px;
+      margin-bottom: 26px;
+      overflow: hidden;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #eef3f8, #e5f2f3);
+    }
+
+    .research-visual::before,
+    .research-visual::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1.5px solid rgba(11, 31, 58, 0.22);
+    }
+
+    .visual-multiphysics::before {
+      width: 112px;
+      height: 112px;
+      left: 42px;
+      top: 15px;
+      box-shadow: 88px 0 0 -18px rgba(15, 123, 131, 0.14);
+    }
+
+    .visual-multiphysics::after {
+      width: 82px;
+      height: 82px;
+      left: 132px;
+      top: 29px;
+      border-color: rgba(15, 123, 131, 0.55);
+    }
+
+    .visual-particles {
+      background-image:
+        radial-gradient(circle, rgba(11,31,58,.45) 0 3px, transparent 4px),
+        radial-gradient(circle, rgba(15,123,131,.55) 0 3px, transparent 4px),
+        linear-gradient(135deg, #eef3f8, #e5f2f3);
+      background-position: 0 0, 17px 17px, 0 0;
+      background-size: 34px 34px, 34px 34px, auto;
+    }
+
+    .visual-particles::before {
+      width: 240px;
+      height: 80px;
+      left: 45px;
+      top: 34px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.80);
+      transform: rotate(-8deg);
+    }
+
+    .visual-hpc::before {
+      width: 54px;
+      height: 54px;
+      left: 62px;
+      top: 44px;
+      border-radius: 11px;
+      box-shadow:
+        76px 0 0 -1px rgba(15, 123, 131, 0.18),
+        152px 0 0 -1px rgba(21, 54, 95, 0.12);
+    }
+
+    .visual-hpc::after {
+      width: 190px;
+      height: 1px;
+      left: 92px;
+      top: 71px;
+      border: 0;
+      border-top: 2px dashed rgba(15, 123, 131, 0.50);
+      border-radius: 0;
+    }
+
+    .visual-digital::before {
+      width: 116px;
+      height: 116px;
+      left: 92px;
+      top: 12px;
+      border-radius: 17px;
+      transform: rotate(45deg);
+      border-color: rgba(15, 123, 131, 0.50);
+    }
+
+    .visual-digital::after {
+      width: 52px;
+      height: 52px;
+      left: 124px;
+      top: 44px;
+      border-color: rgba(11, 31, 58, 0.48);
+      box-shadow: 0 0 0 20px rgba(255,255,255,.42);
+    }
+
+    .research-number {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+    }
+
+    .research-card h3 {
+      margin-bottom: 10px;
+      color: var(--navy);
+      font-size: 21px;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    .research-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* Highlight */
+    .highlight {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .highlight-graphic {
+      position: relative;
+      min-height: 390px;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(255,255,255,.03), rgba(255,255,255,.03)),
+        linear-gradient(145deg, var(--navy), #123e62 57%, var(--teal));
+    }
+
+    .core-ring,
+    .core-ring::before,
+    .core-ring::after {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.33);
+      content: "";
+    }
+
+    .core-ring {
+      width: 230px;
+      height: 230px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 70px rgba(106, 215, 221, 0.18);
+    }
+
+    .core-ring::before { inset: 35px; }
+    .core-ring::after { inset: 78px; background: rgba(255,255,255,.07); }
+
+    .core-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at center, #000 0 52%, transparent 76%);
+    }
+
+    .highlight-copy {
+      padding: clamp(34px, 6vw, 64px);
+    }
+
+    .highlight-copy h3 {
+      margin-bottom: 18px;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    .highlight-copy p { color: var(--muted); }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tag-list li {
+      padding: 7px 10px;
+      border: 1px solid #cfdde1;
+      border-radius: 999px;
+      color: #31505d;
+      background: #f1f7f8;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    /* Experience */
+    .timeline {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 145px;
+      top: 12px;
+      bottom: 12px;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 52px;
+      position: relative;
+      padding: 0 0 40px;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 139px;
+      top: 7px;
+      width: 13px;
+      height: 13px;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 1px var(--teal);
+    }
+
+    .timeline-date {
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      text-align: right;
+    }
+
+    .timeline-content {
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-item:last-child .timeline-content { border-bottom: 0; }
+
+    .timeline-content h3 {
+      margin-bottom: 4px;
+      color: var(--navy);
+      font-size: 20px;
+    }
+
+    .timeline-place {
+      margin-bottom: 9px;
+      color: #33465a;
+      font-weight: 700;
+    }
+
+    .timeline-content p {
+      max-width: 780px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* Publications */
+    .publication-list {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .publication-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 22px;
+      align-items: start;
+      padding: 23px 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      transition: border-color 150ms ease, transform 150ms ease;
+    }
+
+    .publication-item:hover {
+      transform: translateX(3px);
+      border-color: #b9cbd0;
+    }
+
+    .publication-item.with-figure {
+      grid-template-columns: 80px 90px 1fr auto;
+    }
+
+    .publication-year {
+      color: var(--teal);
+      font-size: 14px;
+      font-weight: 850;
+    }
+
+    .publication-figure {
+      width: 90px;
+      height: 90px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--surface-soft);
+      flex-shrink: 0;
+    }
+
+    .publication-figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .publication-title {
+      margin-bottom: 4px;
+      color: var(--navy);
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .publication-meta {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .publication-link {
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .publication-link:hover {
+      color: #fff;
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+
+    .publication-note {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Awards */
+    .award-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .award-card {
+      padding: 24px;
+      border-top: 3px solid var(--teal);
+      border-radius: 0 0 15px 15px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(11,31,58,.06);
+    }
+
+    .award-card .year {
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .award-card h3 {
+      margin: 8px 0 7px;
+      color: var(--navy);
+      font-size: 17px;
+    }
+
+    .award-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Contact */
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 50px;
+      padding: clamp(34px, 6vw, 64px);
+      border-radius: 28px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--navy), #143c62 70%, var(--teal));
+    }
+
+    .contact-panel h2 { color: #fff; }
+    .contact-panel p { color: rgba(255,255,255,.76); }
+
+    .contact-links {
+      display: grid;
+      align-content: center;
+      gap: 10px;
+    }
+
+    .contact-links a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 12px;
+      color: #fff;
+      background: rgba(255,255,255,.06);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .contact-links a:hover { background: rgba(255,255,255,.13); }
+
+    footer {
+      padding: 30px 0 42px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* Accessibility and responsive behavior */
+    :focus-visible {
+      outline: 3px solid rgba(15, 123, 131, 0.35);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .section-heading,
+      .about-grid,
+      .highlight,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero { padding-top: 72px; }
+      .hero-grid { gap: 54px; }
+      .profile-card { width: min(330px, 86%); margin: 0 auto; }
+      .section-heading { gap: 18px; align-items: start; }
+      .highlight-graphic { min-height: 300px; }
+      .award-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .menu-button { display: block; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        top: 65px;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 11px 12px; }
+
+      .research-grid { grid-template-columns: 1fr; }
+      .research-card { min-height: auto; }
+
+      .timeline::before { left: 6px; }
+      .timeline-item { grid-template-columns: 1fr; gap: 8px; padding-left: 32px; }
+      .timeline-item::before { left: 0; }
+      .timeline-date { text-align: left; }
+
+      .publication-item {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
+
+      .publication-item.with-figure {
+        grid-template-columns: 1fr;
+      }
+
+      .publication-figure {
+        width: 100%;
+        height: 150px;
+        margin-bottom: 8px;
+      }
+      section { padding: 70px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
 </head>
+
 <body>
-    <article id="main-article" class="page sans">
-        <header>
-            <h1 class="page-title">Hee Sang Yoo, Ph.D.</h1>
-        </header>
-        <div class="page-body">
-            <div class="column-list">
-                <div id="main-content" style="width:75%" class="column">
-                    <p>I hold a Ph.D. in Nuclear Engineering from Seoul National University and currently work as a postdoctoral researcher. During my doctoral studies under <a href="https://snueslab.com/">Prof. Eung Soo Kim</a>, I developed particle-based CFD codes in CUDA C++ named <a href="https://www.oecd-nea.org/tools/abstract/detail/nea-1911/">SOPHIA</a>, focusing on thermal-hydraulic and safety aspects within the nuclear field. Based on these developed codes, I performed simulations on droplet dynamics, highly viscous fluid interactions, and corium spreading, and participated in various internal projects, including multi-GPU code extensions.</p>
-                    <p>I also have experience with commercial CFD programs and system codes such as MODELICA and DYMOLA, and I am expanding my capabilities through various collaborative projects. These include modeling the EU-APR 1400 core catcher using particle-based code and SMR system modeling based on MODELICA. My expertise encompasses high-performance computing, multi-physics simulations, and a proactive, collaborative approach to research. I am eager to continue applying my skills and knowledge to contribute to innovative research and projects in the nuclear engineering field.</p>
-                    <p>Please feel free to contact me!</p>
-                </div>
-                <div id="sidebar" style="width:25%" class="column">
-                    <figure class="image" style="text-align:center">
-                        <a2 href="figure/PHOTO.jpg">
-                            <img style="width:240px" src="figure/PHOTO.jpg"/>
-                        </a2>
-                    </figure>
-                    <div class="icon-container">
-                        <a href="https://scholar.google.co.kr/citations?user=WE6J39QAAAAJ&amp;hl=ko">
-                            <img src="figure/scholar.png" alt="Google Scholar" class="icon"/>
-                        </a>
-                        &nbsp;/&nbsp;
-                        <a href="https://www.linkedin.com/in/heesang-yoo-963267172/">
-                            <img src="figure/linkedin.png" alt="LinkedIn" class="icon"/>
-                        </a>
-                        &nbsp;/&nbsp;
-                        <a href="https://www.linkedin.com/in/heesang-yoo-963267172/overlay/1713720810687/single-media-viewer/?profileId=ACoAACj5EpsBz6rEXQVwXBcgMFebYMZsXgq1_wE">
-                            <img src="figure/cv.png" alt="cv" class="icon"/>
-                        </a>
-                    </div>
-                </div>
-                <!-- <div class="sidebar">
-                    <ul>
-                        <li><a href="#education">Education</a></li>
-                        <li><a href="#career">Career</a></li>
-                        <li><a href="#publications-published">Publications</a></li>
-                    </ul>
-                </div> -->
-            </div>
-            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="education" class=""><strong>Education</strong></h2></span>
-            <hr id="education-divider"/>
-            <ul id="education-list" class="bulleted-list">
-                <li style="list-style-type:disc"><strong>Ph.D.</strong> <a href="https://nucleng.snu.ac.kr/">Nuclear Engineering, Seoul National University (SNU) </a><span style="float: right; font-weight: bold;">2024</span>
-                    <ul class="bulleted-list">
-                        <li style="list-style-type:circle">Advisor: <a href="https://snueslab.com/">Prof. Eung Soo Kim</a></li>
-                        <li style="list-style-type:circle">Dissertation: Multiphase ALE-SPH for Versatile Approaches on Highly Viscous Corium Simulation</li>
-                    </ul>
-                </li>
-                <li style="list-style-type:disc"><strong>B.E.</strong> <a href="https://nucleng.snu.ac.kr/">Nuclear Engineering, Seoul National University (SNU) </a> <span style="float: right; font-weight: bold;">2017</span>
-                    <ul class="bulleted-list">
-                        <li style="list-style-type:circle">Chair of the SNU Global/Domestic Education Outreaching Club</li>
-                    </ul>
-                </li>
-            </ul>
-            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="career" class=""><strong>Career</strong></h2></span>
-            <hr id="career-divider"/>
-            <ul id="career-list" class="bulleted-list">
-                <li style="list-style-type:disc"><strong>Postdoctoral Researcher</strong>
-                    <p id="career-description">Seoul National University (SNU) Nuclear Research Institute for Future Technology and Policy. <span style="float: right; font-weight: bold;">2024.3 ~ Now</span></p>
-                </li>
-            </ul>
-            <br/>
-            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="publications-published" class=""><strong>Publication International Journal (Published)</strong></h2></span>
-            <hr id="publications-divider"/>
-            <ol type="1" id="published-list" class="numbered-list" start="1">
-                <li>
-                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
-                        <strong style="font-size: 1.0em; font-weight: bold;">Yoo, H. S., Jo, Y. B., &amp; Kim, E. S. (2024).</strong> 
-                        Comparative study of WCSPH, EISPH and Explicit Incompressible-Compressible SPH (EICSPH) for Multi-Phase Flow with High Density Difference.
-                        <em>Journal of Computational Physics</em>, 112930. <strong>(JCR 4.5%)</strong>
-                        <a href="https://doi.org/10.1016/j.jcp.2024.112930"><span style="color: rgb(0, 0, 255);">Link</span></a>
-                    </div>
-                    <div class="video-container">
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
-                        <strong>Yoo, H. S., Jo, Y. B., Kim, J. W., Kim, E. S., &amp; Choi, T. S. (2023).</strong> 
-                        A simple Eulerian–Lagrangian weakly compressible smoothed particle hydrodynamics method for fluid flow and heat transfer. 
-                        <em>International Journal for Numerical Methods in Engineering</em>, 
-                        <em>124</em>(4), 928-958. <a href="https://doi.org/10.1002/nme.7197">(Featured Cover)</a>
-                        <a href="https://doi.org/10.1002/nme.7148"><span style="color: rgb(0, 0, 255);">Link</span></a>
-                    </div>
-                     <div class="video-container">
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
-                        Jo, Y. B., Park, S. H., <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2022). 
-                        GPU-based SPH-DEM Method to Examine the Three-Phase Hydrodynamic Interactions between Multiphase Flow and Solid Particles. 
-                        <em>International Journal of Multiphase Flow</em>, <em>153</em>, 104125.
-                        <a href="https://doi.org/10.1016/j.ijmultiphaseflow.2022.104125"><span style="color: rgb(0, 0, 255);">Link</span></a>
-                    </div>
-                     <div class="video-container">
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
-                        <strong>Yoo, H. S.</strong>, Choi, H. Y., Kim, T. H., &amp; Kim, E. S. (2022). 
-                        Effect of wettability on the water entry of spherical projectiles: Numerical analysis using smoothed particle hydrodynamics. 
-                        <em>AIP Advances</em>, <em>12</em>(3). <strong>(Editor’s Pick)</strong>
-                        <a href="https://doi.org/10.1063/5.0072710"><span style="color: rgb(0, 0, 255);">Link</span></a>
-                    </div>
-                     <div class="video-container">
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
-                        Park, S. H., Jo, Y. B., Ahn, Y., Choi, H. Y., Choi, T. S., Park, S. S., 
-                        <strong>Yoo, H. S.</strong>, Kim, J.K. &amp; Kim, E. S. (2020). 
-                        Development of multi-GPU–based smoothed particle hydrodynamics code for nuclear thermal hydraulics and safety: potential and challenges. 
-                        <em>Frontiers in Energy Research</em>, <em>8</em>, 86.
-                        <a href="https://doi.org/10.3389/fenrg.2020.00086"><span style="color: rgb(0, 0, 255);">Link</span></a>
-                    </div>
-                </li>
-                <li>
-                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
-                        <strong>Yoo, H. S.</strong>, Yoo, S. H., &amp; Kim, E. S. (2019). 
-                        Heat transfer enhancement in dry cask storage for nuclear spent fuel using additive high density inert gas. 
-                        <em>Annals of Nuclear Energy</em>, <em>132</em>, 108-118.
-                        <a href="https://doi.org/10.1016/j.anucene.2019.04.018"><span style="color: rgb(0, 0, 255);">Link</span></a>
-                    </div>
-                </li>
-            </ol>
-            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="publications-in-review" class=""><strong>Publication International Journal (In preparation or under review)</strong></h2></span>
-            <hr id="in-review-divider"/>
-            <ol type="1" id="in-review-list" class="numbered-list" start="1">
-                <li>
-                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
-                        <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2024). Numerical simulation of corium spreading phenomena using SPH method. 
-                        Nuclear Engineering Technology. <strong>(under review)</strong>
-                    </div>
-                     <div class="video-container">
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
-                        Ahn, Y. L.,<strong>Yoo, H. S.</strong>, Choi, N. J., &amp; Kim, E. S. (2024). Dynamic Load Balancing of Multi-GPU Paralleli
-                        zation for VULCANO VE-U7 Corium Spreading Analysis using SOPHIA. Nuclear Technology <strong>(under review)</strong>
-                    </div>
-                     <div class="video-container">
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
-                        Kim, J. H, <strong>Yoo, H. S.</strong>, Jo, Y. B, Park, S. S, &amp; Kim, E. S. (2024). GPU-Parallelized SPH Solver for Accurate 
-                        Simulation of Shaped Charge Jet Penetration in Concrete Structures, Defence Technology <strong>(under review)</strong>
-                    </div>
-                    <div class="video-container">
-                        <div class="video-box">
-                            <h3 class="video-title">Shaped Charge Jet Penetration in Concrete Structures</h3>
-                            <video controls width="100%" height="300px">
-                                <source src="video/video1.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                        <div class="video-box">
-                            <h3 class="video-title">Shaped Charge Jet Penetration in Concrete Structures</h3>
-                            <video controls width="100%" height="300px">
-                                <source src="video/video2.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
-                    </div>
-                </li>
-                
-                <li>
-                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
-                        Kim, J. H, <strong>Yoo, H. S.</strong>, Jo, Y. B, &amp; Kim, E. S. (2024). Simulation on Nuclear Reactor Cavity Analysis during
-                        External Steam Explosion using Unified SPH. Progress of Nuclear Energy. <strong>(in preparation)</strong>
-                    </div>
-                      <div class="video-container">
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                    </div>
-                    </li>
-                <li>
-                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
-                        <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2024). Efficient GPU parallelized Matrix-Free Implicit Viscosity Solver for Highly 
-                        Viscous Fluids in Smoothed Particle Hydrodynamics. Engineering with Computers <strong>(in preparation)</strong>
-                    </div>
-                     <div class="video-container">
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
-                        <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2024). Numerical simulation of Janus droplet formation in microfluidics system using 
-                        Smoothed Particle Hydrodynamics. Chemical Engineering Science. <strong>(in preparation)</strong>
-                    </div>
-                     <div class="video-container">
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; background-color: #f9f9f9;">
-                        <strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2025). Numerical simulation of performance in EU-APR 1400 core catcher using SPH method.
-                        Nuclear Engineering Technology. <strong>(in preparation)</strong>
-                    </div>
-                      <div class="video-container">
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                        <div class="video-box">
-                            <h3 class="video-title">Coming Soon</h3>
-                            <img src="figure/comingsoon.webp" alt="Coming Soon" style="width:100%; height:auto;">
-                        </div>
-                    </div>
-                </li>
-            </ol>
-            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="conference-international" class=""><strong>Proceeding International Conference</strong></h2></span>
-            <hr id="conference-divider"/>
-            <ol type="1" id="conference-list" class="numbered-list" start="1">
-                <li><strong>Yoo, H. S.</strong>, Jo, Y. B., &amp; Kim, E. S. (2022) GPU-accelerated Explicit Incompressible-Compressible SPH for multi-phase flow with large density difference, <em>Proceedings of the SPHERIC Workshop, Piazza Roma, Catania. Italy</em></li>
-                <li><strong>Yoo, H. S.</strong>, Yoo, S. H., &amp; Kim, E. S. (2018) Heat Transfer Enhancement of Dry Cask Storage System Using Binary Helium and Heavy Inert Gas Mixture, <em>The Eleventh Korea-Japan Symposium on Nuclear Thermal Hydraulics and Safety</em>, Busan, Korea, November 18-21, 2018</li>
-                <li>Song, M. S., <strong>Yoo, H. S.</strong>, Kim, J. H., &amp; Kim, E. S. (2017). The investigation of flow characteristics in 3-pin wire-wrapped fuel bundle using laser-based measurement techniques. <em>17th International Topical Meeting on Nuclear Reactor Thermal Hydraulics (NURETH 17)</em>, Xi'an, China, September 3–8, 2017.</li>
-            </ol>
-            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="conference-domestic" class=""><strong>Proceeding Domestic Conference</strong></h2></span>
-            <hr id="domestic-conference-divider"/>
-            <ol type="1" id="domestic-conference-list" class="numbered-list" start="1">
-                <li><strong>Yoo, H. S.</strong>, &amp; Kim, E. S. (2024). Numerical Investigation of Corium Spreading Phenomena using Smoothed Particle Hydrodynamics, Transactions of the Korean Nuclear Society Spring Meeting, Jeju, Korea, May 9-10, 2024 <strong>(Best Paper)</strong></li>
-                <li>Park, K. J., Kim, T. H., <strong>Yoo, H. S.</strong>, Jo, Y. B., &amp; Kim, E. S. (2024). Dynamic Modeling for 20 kWe Heat Pipe Fission Battery with Dual Power Conversion System, Transactions of the Korean Nuclear Society Spring Meeting, Jeju, Korea, May 9-10, 2024</li>
-                <li>Park, K. J., Kim, T. H., <strong>Yoo, H. S.</strong>, Kim, E. S., &amp; Jo, Y. B (2023). Dynamic Modeling of Free Piston Stirling Generator for Micro Nuclear Reactors, <em>Transactions of the Korean Nuclear Society Autumn Meeting</em> Gyeong-Ju, Korea, October 25-27, 2023 <strong>(Best Paper)</strong></li>
-                <li><strong>Yoo, H. S.</strong>, Kim, T. H., &amp; Kim, E. S. (2021). Numerical Simulation on Spreading and Impact Behavior of a Single Droplet Using Smoothed Particle Hydrodynamics. <em>Transactions of the Korean Nuclear Society Virtual Autumn Meeting</em>, October 21-22, 2021</li>
-                <li><strong>Yoo, H. S.</strong>, Kim, E. S., &amp; Yoo, S. H. (2018). Thermal Performance Enhancement of Dry Cask Storage System Using Helium-Based Binary Gaseous Mixture. <em>Transactions of the Korean Nuclear Society Autumn Meeting</em>, Yeosu, Korea, October 25-26, 2018 <strong>(Best Poster)</strong></li>
-            </ol>
-            <br/><span style="color: rgb(0, 0, 0);font-family: 'Times New Roman', Times, serif;"><h2 id="invited-talk" class=""><strong>Invited Talk</strong></h2></span>
-            <hr id="invited-talk-divider"/>
-            <ol type="1" id="invited-talk-list" class="numbered-list" start="1">
-                <li>Multiphase SPH for various applications, Inha University, April, 05, 2024</li>
-                <li>Multiphase ALE-SPH for versatile approaches on highly viscous corium simulation, SNU Nuclear Research Institute for Future Technology and Policy, February, 23, 2024</li>
-                <li>Research Activities at SNU during PhD Program, “Multiphase ALE-SPH for versatile approaches on highly viscous corium simulation”, Hanyang University, February, 2, 2024</li>
-            </ol>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Hee Sang Yoo home">
+        <span class="brand-mark">HY</span>
+        <span>Hee Sang Yoo</span>
+      </a>
+
+      <button class="menu-button" type="button" aria-controls="nav-links" aria-expanded="false">
+        Menu
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#experience">Working</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#conferences">Conferences</a></li>
+        <li><a href="#software">Software</a></li>
+        <li><a href="#activities">Activities</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Nuclear Engineering · Computational Science</span>
+          <h1>Hee Sang Yoo, Ph.D.</h1>
+          <p class="hero-subtitle">High-fidelity multiphysics simulation for advanced nuclear systems.</p>
+          <p class="hero-copy">
+            I develop computational methods that connect physical modeling, numerical algorithms,
+            code implementation, and high-performance computing. My work spans particle-based CFD,
+            severe-accident analysis, reactor multiphysics, and digital-twin-enabling technologies.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#research">Explore my research</a>
+            <a class="button secondary" href="https://scholar.google.co.kr/citations?user=WE6J39QAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="button secondary" href="https://www.linkedin.com/in/heesang-yoo-963267172/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
         </div>
-    </article>
+
+        <figure class="profile-card">
+          <img src="figure/PHOTO.jpg" onerror="this.onerror=null;this.src='figure/profile-placeholder.svg';" alt="Portrait of Hee Sang Yoo">
+          <figcaption class="profile-caption">Assistant Professor (조교수) · JBNU Quantum Engineering</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">About</p>
+            <h2>From physical models to scalable simulation software.</h2>
+          </div>
+          <p class="section-intro">
+            My research combines nuclear thermal hydraulics, neutronics, structural mechanics,
+            and scientific computing to build reliable simulation tools for complex reactor phenomena.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              I received my Ph.D. in Nuclear Engineering from Seoul National University, where I developed
+              GPU-accelerated smoothed particle hydrodynamics methods for multiphase flows, highly viscous
+              fluids, corium spreading, and severe-accident applications.
+            </p>
+            <p>
+              I am currently an Assistant Professor at JBNU Quantum Engineering, where I lead research in
+              multiphysics simulation, particle-based CFD, severe-accident analysis, and high-performance
+              computing for advanced nuclear systems.
+            </p>
+            <p>
+              Rather than treating simulation software as a black box, I focus on the complete computational
+              science workflow: formulation, discretization, solver design, parallel implementation,
+              verification, validation, and physical interpretation.
+            </p>
+          </div>
+
+          <ul class="fact-list" aria-label="Research profile">
+            <li><span class="fact-label">Current</span><span class="fact-value">JBNU Quantum Engineering</span></li>
+            <li><span class="fact-label">Degree</span><span class="fact-value">Ph.D., Nuclear Engineering</span></li>
+            <li><span class="fact-label">Focus</span><span class="fact-value">Multiphysics & HPC</span></li>
+            <li><span class="fact-label">Methods</span><span class="fact-value">SPH · CFD · Reactor Physics</span></li>
+            <li><span class="fact-label">Languages</span><span class="fact-value">CUDA C++ · C++ · Python</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft" id="research">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Research directions</p>
+            <h2>Computational foundations for virtual reactors.</h2>
+          </div>
+          <p class="section-intro">
+            My long-term goal is to advance high-fidelity, multiphysics, and multiscale technologies
+            that support safer reactor design, best-estimate analysis, and future digital twins.
+          </p>
+        </div>
+
+        <div class="research-grid">
+          <article class="research-card">
+            <div class="research-visual visual-multiphysics" aria-hidden="true"></div>
+            <span class="research-number">01 · MULTIPHYSICS</span>
+            <h3>Reactor Multiphysics Coupling</h3>
+            <p>
+              Coupling neutronics and thermal hydraulics across 1D, subchannel, and 3D models for
+              local feedback analysis during rapid reactor transients.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <div class="research-visual visual-particles" aria-hidden="true"></div>
+            <span class="research-number">02 · PARTICLE METHODS</span>
+            <h3>Particle-Based CFD & Severe Accidents</h3>
+            <p>
+              SPH methods for multiphase flow, free surfaces, highly viscous corium, spreading,
+              impact, fragmentation, and coupled fluid–structure interaction.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <div class="research-visual visual-hpc" aria-hidden="true"></div>
+            <span class="research-number">03 · HPC</span>
+            <h3>GPU & Parallel Scientific Computing</h3>
+            <p>
+              Matrix-free algorithms, multi-GPU parallelization, dynamic load balancing, and scalable
+              solver design for computationally intensive nuclear engineering problems.
+            </p>
+          </article>
+
+          <article class="research-card">
+            <div class="research-visual visual-digital" aria-hidden="true"></div>
+            <span class="research-number">04 · DIGITAL ENGINEERING</span>
+            <h3>Virtual Reactors & AI-Assisted Simulation</h3>
+            <p>
+              High-fidelity simulation, uncertainty quantification, reduced-order models, and AI
+              acceleration as enabling layers for predictive digital engineering.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="current-work">
+      <div class="container">
+        <div class="highlight">
+          <div class="highlight-graphic" aria-hidden="true">
+            <div class="core-lines"></div>
+            <div class="core-ring"></div>
+          </div>
+          <div class="highlight-copy">
+            <p class="section-kicker">Current research highlight</p>
+            <h3>Local multiphysics phenomena in CABRI reactor transients</h3>
+            <p>
+              I am developing and assessing APOLLO3®–CATHARE3 coupled simulations for CABRI reactor
+              transients. The work examines power-to-temperature feedback, local subchannel behavior,
+              spatial mapping, and the transition from simplified 1D models to multidimensional analysis.
+            </p>
+            <ul class="tag-list">
+              <li>APOLLO3®</li>
+              <li>CATHARE3</li>
+              <li>C3PO / ICoCo</li>
+              <li>RIA</li>
+              <li>3D Coupling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft" id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Working experience</p>
+            <h2>Research across methods, codes, and reactor applications.</h2>
+          </div>
+          <p class="section-intro">
+            My experience has progressed from original GPU-based CFD development to institutional
+            multiphysics platforms and reactor-scale coupled analysis.
+          </p>
+        </div>
+
+        <ol class="timeline">
+          <li class="timeline-item">
+            <div class="timeline-date">2026.09–Present</div>
+            <div class="timeline-content">
+              <h3>Assistant Professor (조교수)</h3>
+              <p class="timeline-place">JBNU Quantum Engineering, Korea</p>
+              <p>
+                Multiphysics simulation, particle-based CFD, severe-accident analysis, and 
+                high-performance computing for advanced nuclear systems.
+              </p>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="timeline-date">2024.11–2026.08</div>
+            <div class="timeline-content">
+              <h3>Postdoctoral Researcher</h3>
+              <p class="timeline-place">CEA Cadarache, France</p>
+              <p>
+                Multiphysics coupling of APOLLO3® and CATHARE3 for CABRI RIA analysis; local and
+                multidimensional neutronics–thermal-hydraulics feedback modeling.
+              </p>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="timeline-date">2024.03–2024.10</div>
+            <div class="timeline-content">
+              <h3>Postdoctoral Researcher</h3>
+              <p class="timeline-place">Seoul National University, Korea</p>
+              <p>
+                Particle-based high-fidelity simulation, severe-accident applications, GPU solver
+                development, and collaborative nuclear system modeling.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="soft" id="education">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Education</p>
+            <h2>Advanced training in nuclear engineering.</h2>
+          </div>
+          <p class="section-intro">
+            Foundation in nuclear engineering theory and research methods for computational multiphysics
+            and high-performance scientific computing.
+          </p>
+        </div>
+
+        <ol class="timeline">
+          <li class="timeline-item">
+            <div class="timeline-date">2017–2024</div>
+            <div class="timeline-content">
+              <h3>Ph.D. in Nuclear Engineering</h3>
+              <p class="timeline-place">Seoul National University, Korea</p>
+              <p>
+                Dissertation: <em>Multiphase ALE-SPH for Versatile Approaches on Highly Viscous
+                Corium Simulation</em>. Advisor: Prof. Eung Soo Kim.
+              </p>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="timeline-date">2013–2017</div>
+            <div class="timeline-content">
+              <h3>B.E. in Nuclear Engineering</h3>
+              <p class="timeline-place">Seoul National University, Korea</p>
+              <p>
+                Undergraduate studies in nuclear engineering and leadership experience as chair of
+                an SNU educational outreach club.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Selected publications</p>
+            <h2>Numerical methods and nuclear engineering applications.</h2>
+          </div>
+          <p class="section-intro">
+            A compact selection is shown here so that visitors can understand the research trajectory
+            quickly. The complete and current list is available on Google Scholar.
+          </p>
+        </div>
+
+        <ol class="publication-list">
+          <li class="publication-item with-figure">
+            <div class="publication-year">2024</div>
+            <div class="publication-figure">
+              <img src="figure/pub-2024-sph.jpg" alt="SPH multiphase flow visualization" onerror="this.style.display='none'">
+            </div>
+            <div>
+              <p class="publication-title">Comparative study of WCSPH, EISPH and Explicit Incompressible-Compressible SPH for multi-phase flow with high density difference</p>
+              <p class="publication-meta"><strong>H. S. Yoo</strong>, Y. B. Jo, and E. S. Kim · <em>Journal of Computational Physics</em></p>
+            </div>
+            <a class="publication-link" href="https://doi.org/10.1016/j.jcp.2024.112930" target="_blank" rel="noopener">DOI ↗</a>
+          </li>
+
+          <li class="publication-item with-figure">
+            <div class="publication-year">2023</div>
+            <div class="publication-figure">
+              <img src="figure/pub-2023-elwcsph.jpg" alt="ELWCSPH method visualization" onerror="this.style.display='none'">
+            </div>
+            <div>
+              <p class="publication-title">A simple Eulerian–Lagrangian weakly compressible smoothed particle hydrodynamics method for fluid flow and heat transfer</p>
+              <p class="publication-meta"><strong>H. S. Yoo</strong>, Y. B. Jo, J. W. Kim, E. S. Kim, and T. S. Choi · <em>International Journal for Numerical Methods in Engineering</em> · Featured Cover</p>
+            </div>
+            <a class="publication-link" href="https://doi.org/10.1002/nme.7148" target="_blank" rel="noopener">DOI ↗</a>
+          </li>
+
+          <li class="publication-item with-figure">
+            <div class="publication-year">2022</div>
+            <div class="publication-figure">
+              <img src="figure/pub-2022-sphdem.jpg" alt="SPH-DEM interaction visualization" onerror="this.style.display='none'">
+            </div>
+            <div>
+              <p class="publication-title">GPU-based SPH-DEM method to examine the three-phase hydrodynamic interactions between multiphase flow and solid particles</p>
+              <p class="publication-meta">Y. B. Jo, S. H. Park, <strong>H. S. Yoo</strong>, and E. S. Kim · <em>International Journal of Multiphase Flow</em></p>
+            </div>
+            <a class="publication-link" href="https://doi.org/10.1016/j.ijmultiphaseflow.2022.104125" target="_blank" rel="noopener">DOI ↗</a>
+          </li>
+
+          <li class="publication-item with-figure">
+            <div class="publication-year">2022</div>
+            <div class="publication-figure">
+              <img src="figure/pub-2022-waterentry.jpg" alt="Water entry simulation" onerror="this.style.display='none'">
+            </div>
+            <div>
+              <p class="publication-title">Effect of wettability on the water entry of spherical projectiles: Numerical analysis using smoothed particle hydrodynamics</p>
+              <p class="publication-meta"><strong>H. S. Yoo</strong>, H. Y. Choi, T. H. Kim, and E. S. Kim · <em>AIP Advances</em> · Editor’s Pick</p>
+            </div>
+            <a class="publication-link" href="https://doi.org/10.1063/5.0072710" target="_blank" rel="noopener">DOI ↗</a>
+          </li>
+
+          <li class="publication-item with-figure">
+            <div class="publication-year">2020</div>
+            <div class="publication-figure">
+              <img src="figure/pub-2020-multigpu.jpg" alt="Multi-GPU SPH code" onerror="this.style.display='none'">
+            </div>
+            <div>
+              <p class="publication-title">Development of multi-GPU-based smoothed particle hydrodynamics code for nuclear thermal hydraulics and safety: potential and challenges</p>
+              <p class="publication-meta">S. H. Park et al., including <strong>H. S. Yoo</strong> · <em>Frontiers in Energy Research</em></p>
+            </div>
+            <a class="publication-link" href="https://doi.org/10.3389/fenrg.2020.00086" target="_blank" rel="noopener">DOI ↗</a>
+          </li>
+
+          <li class="publication-item with-figure">
+            <div class="publication-year">2019</div>
+            <div class="publication-figure">
+              <img src="figure/pub-2019-drycask.jpg" alt="Dry cask storage thermal analysis" onerror="this.style.display='none'">
+            </div>
+            <div>
+              <p class="publication-title">Heat transfer enhancement in dry cask storage for nuclear spent fuel using additive high density inert gas</p>
+              <p class="publication-meta"><strong>H. S. Yoo</strong>, S. H. Yoo, and E. S. Kim · <em>Annals of Nuclear Energy</em></p>
+            </div>
+            <a class="publication-link" href="https://doi.org/10.1016/j.anucene.2019.04.018" target="_blank" rel="noopener">DOI ↗</a>
+          </li>
+        </ol>
+
+        <p class="publication-note">
+          Tip: keep the homepage list selective. Add a separate <code>publications.html</code> page later for the full journal, conference, and invited-talk record.
+        </p>
+      </div>
+    </section>
+
+    <section class="soft" id="conferences">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Conference presentations</p>
+            <h2>Research dissemination across international venues.</h2>
+          </div>
+          <p class="section-intro">
+            Presentations at peer-reviewed conferences and invited talks spanning multiphase flow,
+            thermal hydraulics, reactor physics, and computational methods.
+          </p>
+        </div>
+
+        <ol class="publication-list" style="font-size: 14px;">
+          <li class="publication-item">
+            <div class="publication-year">2026</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">Multiphysics Coupling of APOLLO3 and CATHARE3 via the C3PO Platform for Analysis of CABRI Power Transients</p>
+              <p class="publication-meta">H. S. Yoo, J. Debove, C. Vaglio-Gaudard, E. Y. Garcia-Cervantes, J. C. Jaboulay, J. M. Labit · PHYSOR 2026 (Accepted) · Turin, Italy</p>
+            </div>
+          </li>
+
+          <li class="publication-item">
+            <div class="publication-year">2025</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">A Smoothed Particle Hydrodynamics Model for Safety Assessment of the Ex-vessel Core Catcher under Reactor Vessel Failure</p>
+              <p class="publication-meta">J. W. Kim, H. S. Yoo, T. H. Lee, Y. Ahn, M. C. Kwon, E. S. Kim · NURETH-21 (Best Paper) · Busan, Korea</p>
+            </div>
+          </li>
+
+          <li class="publication-item">
+            <div class="publication-year">2025</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">Particle-Based Approaches to Multiphysics Simulation in Nuclear Safety</p>
+              <p class="publication-meta">E. S. Kim, Y. Ahn, J. W. Kim, J. H. Kim, J. Park, Y. B. Jo, H. S. Yoo · NURETH-21 · Busan, Korea</p>
+            </div>
+          </li>
+
+          <li class="publication-item">
+            <div class="publication-year">2025</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">Numerical Analysis of Melting and Interfacial Flow in a Direct-Contact Latent Heat Storage System Reflecting the Marangoni Effect</p>
+              <p class="publication-meta">M. H. Kim, H. S. Yoo, I. W. Park · KSFM · Jeju, Korea (in Korean)</p>
+            </div>
+          </li>
+
+          <li class="publication-item">
+            <div class="publication-year">2024</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">Investigation on the Safety Assessment of an Ex-vessel Core Catcher under Large-break Reactor Vessel Failures Using Smoothed Particle Hydrodynamics</p>
+              <p class="publication-meta">H. S. Yoo · The Eleventh Korea-Japan Symposium on Nuclear Thermal Hydraulics and Safety · Seoul, Korea</p>
+            </div>
+          </li>
+
+          <li class="publication-item">
+            <div class="publication-year">2024</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">Numerical Investigation of Corium Spreading Phenomena using Smoothed Particle Hydrodynamics</p>
+              <p class="publication-meta">H. S. Yoo, E. S. Kim · Korean Nuclear Society (Best Paper) · Jeju, Korea (in Korean)</p>
+            </div>
+          </li>
+
+          <li class="publication-item">
+            <div class="publication-year">2024</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">Dynamic Modeling for 20 kWe Heat Pipe Fission Battery with Dual Power Conversion System</p>
+              <p class="publication-meta">K. J. Park, T. H. Kim, H. S. Yoo, Y. B. Jo, E. S. Kim · Korean Nuclear Society · Jeju, Korea (in Korean)</p>
+            </div>
+          </li>
+
+          <li class="publication-item">
+            <div class="publication-year">2023</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">Dynamic Modeling of Free Piston Stirling Generator for Micro Nuclear Reactors</p>
+              <p class="publication-meta">K. J. Park, T. H. Kim, H. S. Yoo, E. S. Kim, Y. B. Jo · Korean Nuclear Society (Best Paper) · Gyeong-Ju, Korea (in Korean)</p>
+            </div>
+          </li>
+
+          <li class="publication-item">
+            <div class="publication-year">2022</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">GPU-accelerated Explicit Incompressible-Compressible SPH for multi-phase flow with large density difference</p>
+              <p class="publication-meta">H. S. Yoo, Y. B. Jo, E. S. Kim · Proceedings of the SPHERIC Workshop · Piazza Roma, Catania, Italy</p>
+            </div>
+          </li>
+
+          <li class="publication-item">
+            <div class="publication-year">2021</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">Development of an Eulerian–Lagrangian Coupling Method Using SPH</p>
+              <p class="publication-meta">H. S. Yoo, E. S. Kim · KSCFE · Seoul, Korea (in Korean)</p>
+            </div>
+          </li>
+
+          <li class="publication-item">
+            <div class="publication-year">2021</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">Comparative Analysis of Recent Pressure-Noise Reduction Methods for Free-Surface Flow and Fluid–Structure Interaction Using SPH</p>
+              <p class="publication-meta">H. S. Yoo, E. S. Kim · KSOE · Busan, Korea (in Korean)</p>
+            </div>
+          </li>
+
+          <li class="publication-item">
+            <div class="publication-year">2021</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">Numerical Simulation on Spreading and Impact Behavior of a Single Droplet Using Smoothed Particle Hydrodynamics</p>
+              <p class="publication-meta">H. S. Yoo, T. H. Kim, E. S. Kim · Korean Nuclear Society · Virtual (in Korean)</p>
+            </div>
+          </li>
+
+          <li class="publication-item">
+            <div class="publication-year">2018</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">Heat Transfer Enhancement of Dry Cask Storage System Using Binary Helium and Heavy Inert Gas Mixture</p>
+              <p class="publication-meta">H. S. Yoo, S. H. Yoo, E. S. Kim · The Eleventh Korea-Japan Symposium on Nuclear Thermal Hydraulics and Safety · Busan, Korea</p>
+            </div>
+          </li>
+
+          <li class="publication-item">
+            <div class="publication-year">2018</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">Thermal Performance Enhancement of Dry Cask Storage System Using Helium-Based Binary Gaseous Mixture</p>
+              <p class="publication-meta">H. S. Yoo, E. S. Kim, S. H. Yoo (Best Poster) · Korean Nuclear Society · Yeosu, Korea (in Korean)</p>
+            </div>
+          </li>
+
+          <li class="publication-item">
+            <div class="publication-year">2017</div>
+            <div>
+              <p class="publication-title" style="font-size: 15px;">The investigation of flow characteristics in 3-pin wire-wrapped fuel bundle using laser-based measurement techniques</p>
+              <p class="publication-meta">M. S. Song, H. S. Yoo, J. H. Kim, E. S. Kim · NURETH-17 · Xi'an, China</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="software">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Software & computational methods</p>
+            <h2>Development and dissemination of scientific software.</h2>
+          </div>
+          <p class="section-intro">
+            Open-source and collaborative platforms for multiphysics, thermal hydraulics, and 
+            high-performance computing in nuclear engineering.
+          </p>
+        </div>
+
+        <div class="research-grid" style="grid-template-columns: 1fr;">
+          <article class="research-card">
+            <span class="research-number">SOPHIA</span>
+            <h3>A Lagrangian-based HPC-CFD code for versatile thermal-hydraulics and nuclear safety application</h3>
+            <p>
+              <strong>NEA-1911</strong> · <a href="https://www.oecd-nea.org/tools/abstract/detail/nea-1911/" target="_blank" rel="noopener" style="color: var(--teal); text-decoration: underline;">OECD-NEA Official Repository</a>
+              <br><br>
+              <strong>Description:</strong> SOPHIA is a GPU-enabled, particle-based multiphase flow solver built on smoothed particle hydrodynamics (SPH), 
+              Lagrangian discretization, and matrix-free iterative solvers. Designed for high-fidelity thermal-hydraulic analysis of corium 
+              spreading, severe accidents, free-surface dynamics, highly viscous multiphase systems, and fluid–structure interaction.
+              <br><br>
+              <strong>Principal Investigator:</strong> Prof. Eung Soo Kim
+              <br>
+              <strong>Co-Developers:</strong> Y. B. Jo, S. H. Park, H. Y. Choi, T. S. Choi, S. S. Park, H. S. Yoo, Y. L. Ahn, J. H. Kim, T. H. Lee, H. Chae, J. M. Park, J. R. Kim, D. H. Kim
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft" id="activities">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Professional activities</p>
+            <h2>Service, mentoring, and academic leadership.</h2>
+          </div>
+          <p class="section-intro">
+            Contributions to peer review, teaching, mentoring, and outreach across national and 
+            international academic communities.
+          </p>
+        </div>
+
+        <div style="display: grid; gap: 40px;">
+          <!-- Technical Review -->
+          <div>
+            <h3 style="color: var(--navy); font-size: 18px; margin-bottom: 16px;">Technical Review</h3>
+            <ul style="margin: 0; padding: 0; list-style: none; color: var(--muted); font-size: 15px; line-height: 1.7;">
+              <li>The Korean Hydrogen & New Energy Society</li>
+              <li>Korean Nuclear Society</li>
+              <li>Ocean Engineering</li>
+              <li>Nuclear Engineering and Technology</li>
+              <li>Physics of Fluids</li>
+            </ul>
+          </div>
+
+          <!-- Leadership & Extracurricular Activities -->
+          <div>
+            <h3 style="color: var(--navy); font-size: 18px; margin-bottom: 16px;">Leadership & Extracurricular Activities</h3>
+            <ul style="margin: 0; padding: 0; list-style: none; color: var(--muted); font-size: 15px; line-height: 1.8;">
+              <li><strong style="color: var(--navy);">President</strong>, SNU Global Outreach & Education Club (2015)
+                <br><span style="font-size: 13px;">Organized academic exchange events and coordinated volunteer programs with international students.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Teaching & Supervision Experience -->
+          <div>
+            <h3 style="color: var(--navy); font-size: 18px; margin-bottom: 16px;">Teaching & Supervision Experience</h3>
+            <ul style="margin: 0; padding: 0; list-style: none; color: var(--muted); font-size: 15px; line-height: 1.8;">
+              <li><strong style="color: var(--navy);">Undergraduate Thesis Supervision</strong>
+                <br>Tae Hwan Kim (B.S. thesis, 2020) – <em style="color: var(--teal);">awarded Best Thesis Prize</em>
+              </li>
+              <li style="margin-top: 14px;"><strong style="color: var(--navy);">Teaching Assistant</strong>
+                <ul style="margin-top: 8px; margin-bottom: 0; padding-left: 20px; list-style: disc;">
+                  <li>Engineering of Energy Systems (2017)</li>
+                  <li>High-Performance Particle Methods for Thermal–Hydraulic Analysis (2021)</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft" id="recognition">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Selected recognition</p>
+            <h2>Research recognized across journals and conferences.</h2>
+          </div>
+          <p class="section-intro">
+            Use this area for only the most meaningful distinctions; a short list communicates impact
+            more effectively than a long catalogue.
+          </p>
+        </div>
+
+        <div class="award-grid">
+          <article class="award-card">
+            <span class="year">2025</span>
+            <h3>Best Paper Award</h3>
+            <p>NURETH-21.</p>
+          </article>
+          <article class="award-card">
+            <span class="year">2024</span>
+            <h3>Best Paper Award</h3>
+            <p>Korean Nuclear Society Spring Meeting.</p>
+          </article>
+          <article class="award-card">
+            <span class="year">2022–2023</span>
+            <h3>Editorial Recognition</h3>
+            <p>AIP Advances Editor’s Pick and IJNME Featured Cover.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <p class="section-kicker" style="color:#81d7dc;">Contact</p>
+            <h2>Let’s discuss computational nuclear engineering.</h2>
+            <p>
+              I welcome research discussions and collaborations in reactor multiphysics,
+              particle-based simulation, high-performance computing, severe accidents,
+              and digital engineering for advanced reactors.
+            </p>
+          </div>
+          <div class="contact-links">
+            <a href="https://scholar.google.co.kr/citations?user=WE6J39QAAAAJ&amp;hl=en" target="_blank" rel="noopener"><span>Google Scholar</span><span>↗</span></a>
+            <a href="https://www.linkedin.com/in/heesang-yoo-963267172/" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a>
+            <a href="https://www.linkedin.com/in/heesang-yoo-963267172/overlay/1713720810687/single-media-viewer/?profileId=ACoAACj5EpsBz6rEXQVwXBcgMFebYMZsXgq1_wE" target="_blank" rel="noopener"><span>Curriculum Vitae</span><span>↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="current-year"></span> Hee Sang Yoo. Built for GitHub Pages.</div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('#nav-links');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.querySelector('#current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
