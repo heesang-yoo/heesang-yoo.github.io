@@ -41,6 +41,7 @@
 
     body {
       margin: 0;
+      overflow-x: clip;
       color: var(--ink);
       background: var(--surface);
       font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -243,12 +244,23 @@
       letter-spacing: -0.025em;
     }
 
-    .hero-copy {
+    .hero-about-me {
       max-width: 735px;
       margin-bottom: 30px;
-      color: var(--muted);
-      font-size: 17px;
     }
+
+    .hero-about-me .section-kicker {
+      margin-bottom: 12px;
+    }
+
+    .hero-about-me p:not(.section-kicker) {
+      margin-bottom: 11px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .hero-about-me p:last-child { margin-bottom: 0; }
 
     .hero-actions {
       display: flex;
@@ -330,6 +342,16 @@
       align-items: end;
     }
 
+    .section-heading > * {
+      min-width: 0;
+    }
+
+    .section-heading h2,
+    .section-intro {
+      max-width: 100%;
+      overflow-wrap: break-word;
+    }
+
     .section-kicker {
       margin-bottom: 10px;
       color: var(--teal);
@@ -352,47 +374,6 @@
       margin-bottom: 0;
       color: var(--muted);
       font-size: 17px;
-    }
-
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .about-copy p {
-      color: #3d4958;
-      font-size: 17px;
-    }
-
-    .about-copy p:last-child { margin-bottom: 0; }
-
-    .fact-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      border-top: 1px solid var(--line);
-    }
-
-    .fact-list li {
-      display: grid;
-      grid-template-columns: 105px 1fr;
-      gap: 16px;
-      padding: 15px 0;
-      border-bottom: 1px solid var(--line);
-      font-size: 14px;
-    }
-
-    .fact-label {
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .fact-value {
-      color: var(--navy);
-      font-weight: 700;
     }
 
     /* Research */
@@ -635,6 +616,11 @@
       font-size: 17px;
     }
 
+    #experience .section-heading {
+      grid-template-columns: 1fr;
+      margin-bottom: 28px;
+    }
+
     .timeline {
       position: relative;
       margin: 0;
@@ -657,7 +643,7 @@
       grid-template-columns: 120px 1fr;
       gap: 52px;
       position: relative;
-      padding: 0 0 40px;
+      padding: 0 0 30px;
     }
 
     .timeline-item:last-child { padding-bottom: 0; }
@@ -683,7 +669,7 @@
     }
 
     .timeline-content {
-      padding-bottom: 30px;
+      padding-bottom: 14px;
       border-bottom: 1px solid var(--line);
     }
 
@@ -696,7 +682,7 @@
     }
 
     .timeline-place {
-      margin-bottom: 9px;
+      margin-bottom: 0;
       color: #33465a;
       font-weight: 700;
     }
@@ -722,7 +708,7 @@
       grid-template-columns: 80px 1fr auto;
       gap: 22px;
       align-items: start;
-      padding: 23px 24px;
+      padding: 13px 13px 16px;
       border: 1px solid var(--line);
       border-radius: 16px;
       background: #fff;
@@ -735,7 +721,12 @@
     }
 
     .publication-item.with-figure {
-      grid-template-columns: 80px 90px 1fr auto;
+      grid-template-columns: 80px 225px minmax(0, 1fr) auto;
+      column-gap: 0px;
+    }
+
+    .publication-item.with-figure > div:nth-of-type(3) {
+      margin-left: 20px;
     }
 
     .publication-year {
@@ -753,8 +744,8 @@
     }
 
     .publication-figure {
-      width: 90px;
-      height: 90px;
+      width: 225px;
+      height: 165px;
       border-radius: 10px;
       overflow: hidden;
       background: var(--surface-soft);
@@ -764,8 +755,74 @@
     .publication-figure img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      padding: 4px;
+      object-fit: contain;
       object-position: center;
+      background: #fff;
+      cursor: zoom-in;
+    }
+
+    .image-lightbox {
+      position: fixed;
+      z-index: 2000;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 34px;
+      background: rgba(4, 13, 22, .88);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .2s ease, visibility .2s ease;
+    }
+
+    .image-lightbox.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .image-lightbox img {
+      display: block;
+      max-width: min(1200px, 92vw);
+      max-height: 88vh;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .45);
+      object-fit: contain;
+      transform: scale(.97);
+      transition: transform .2s ease;
+    }
+
+    .image-lightbox.open img {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, .45);
+      border-radius: 50%;
+      background: rgba(0, 0, 0, .25);
+      color: #fff;
+      font: 300 30px/1 sans-serif;
+      cursor: pointer;
+    }
+
+    body.lightbox-open {
+      overflow: hidden;
+    }
+
+    @media (max-width: 640px) {
+      .image-lightbox {
+        padding: 20px;
+      }
+
+      .image-lightbox img {
+        max-width: 96vw;
+        max-height: 82vh;
+      }
     }
 
     .publication-placeholder {
@@ -783,7 +840,7 @@
     .publication-title {
       margin-bottom: 4px;
       color: var(--navy);
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 800;
       line-height: 1.45;
     }
@@ -792,6 +849,20 @@
       margin-bottom: 0;
       color: var(--muted);
       font-size: 14px;
+    }
+
+    .publication-authors {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .publication-journal {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
     }
 
     .publication-link {
@@ -922,7 +993,6 @@
     @media (max-width: 900px) {
       .hero-grid,
       .section-heading,
-      .about-grid,
       .highlight,
       .contact-panel {
         grid-template-columns: 1fr;
@@ -972,6 +1042,10 @@
 
       .publication-item.with-figure {
         grid-template-columns: 1fr;
+      }
+
+      .publication-item.with-figure > div:nth-of-type(3) {
+        margin-left: 0;
       }
 
       .publication-figure {
@@ -1041,7 +1115,6 @@
     html[data-theme="dark"] :is(
       h1, h2, h3, h4,
       .brand,
-      .fact-value,
       .timeline-content h3,
       .publication-title,
       .publication-number
@@ -1049,8 +1122,16 @@
       color: #e8f1f8;
     }
 
-    html[data-theme="dark"] :is(.hero-subtitle, .about-copy p) {
+    html[data-theme="dark"] .hero-subtitle {
       color: #b8cbd4;
+    }
+
+    html[data-theme="dark"] .timeline-place {
+      color: #b8cbd4;
+    }
+
+    html[data-theme="dark"] .timeline-item::before {
+      border-color: #0e1d26;
     }
 
     html[data-theme="dark"] .experience-subheading,
@@ -1063,7 +1144,6 @@
       .timeline-content,
       .publication-item,
       .award-card,
-      .fact-list li,
       .nav-links
     ) {
       border-color: #294553;
@@ -1136,7 +1216,7 @@
 
   <header class="site-header">
     <nav class="navbar container" aria-label="Main navigation">
-      <a class="brand" href="#home" aria-label="Hee Sang Yoo home">
+      <a class="brand" href="#about" aria-label="Hee Sang Yoo home">
         <span class="brand-mark">HY</span>
         <span>Hee Sang Yoo</span>
       </a>
@@ -1151,7 +1231,7 @@
             <span aria-hidden="true">☾</span>
           </button>
         </li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#about">About me</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#publications">Publications</a></li>
@@ -1161,69 +1241,45 @@
   </header>
 
   <main id="main-content">
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">Nuclear Engineering · Computational Science</span>
-          <h1>Hee Sang Yoo, Ph.D.</h1>
-          <p class="hero-subtitle">High-fidelity multiphysics simulation for advanced nuclear systems.</p>
-          <p class="hero-copy">
-            I develop computational methods that connect physical modeling, numerical algorithms,
-            code implementation, and high-performance computing. My work spans particle-based CFD,
-            severe-accident analysis, reactor multiphysics, and digital-twin-enabling technologies.
-          </p>
-          <div class="hero-actions">
-            <a class="button" href="#research">Explore my research</a>
-            <a class="button secondary" href="https://scholar.google.co.kr/citations?user=WE6J39QAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
-            <a class="button secondary" href="https://www.linkedin.com/in/heesang-yoo-963267172/" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
-        </div>
-
-        <figure class="profile-card">
-          <img src="figure/PHOTO.jpg" onerror="this.onerror=null;this.src='figure/profile-placeholder.svg';" alt="Portrait of Hee Sang Yoo">
-        </figure>
-      </div>
-    </section>
-
-    <section id="about">
+    <section class="hero" id="about">
       <div class="container">
-        <div class="section-heading">
+        <div class="hero-grid">
           <div>
-            <p class="section-kicker">About</p>
-            <h2>From physical models to scalable simulation software.</h2>
+            <span class="eyebrow">Nuclear Engineering · Computational Science</span>
+            <h1>Hee Sang Yoo, Ph.D.</h1>
+            <p class="hero-subtitle">High-fidelity multiphysics simulation for advanced nuclear systems.</p>
+            <div class="hero-about-me">
+              <p class="section-kicker">About Me</p>
+              <p>
+                My research combines nuclear thermal hydraulics, neutronics, structural mechanics,
+                and scientific computing to build reliable simulation tools for complex reactor phenomena.
+              </p>
+              <p>
+                I received my Ph.D. in Nuclear Engineering from Seoul National University, where I developed
+                GPU-accelerated smoothed particle hydrodynamics methods for multiphase flows, highly viscous
+                fluids, corium spreading, and severe-accident applications.
+              </p>
+              <p>
+                I am currently an Assistant Professor at JBNU Quantum Engineering, where I lead research in
+                multiphysics simulation, particle-based CFD, severe-accident analysis, and high-performance
+                computing for advanced nuclear systems.
+              </p>
+              <p>
+                Rather than treating simulation software as a black box, I focus on the complete computational
+                science workflow: formulation, discretization, solver design, parallel implementation,
+                verification, validation, and physical interpretation.
+              </p>
+            </div>
+            <div class="hero-actions">
+              <a class="button" href="#research">Explore my research</a>
+              <a class="button secondary" href="https://scholar.google.co.kr/citations?user=WE6J39QAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="button secondary" href="https://www.linkedin.com/in/heesang-yoo-963267172/" target="_blank" rel="noopener">LinkedIn</a>
+            </div>
           </div>
-          <p class="section-intro">
-            My research combines nuclear thermal hydraulics, neutronics, structural mechanics,
-            and scientific computing to build reliable simulation tools for complex reactor phenomena.
-          </p>
-        </div>
 
-        <div class="about-grid">
-          <div class="about-copy">
-            <p>
-              I received my Ph.D. in Nuclear Engineering from Seoul National University, where I developed
-              GPU-accelerated smoothed particle hydrodynamics methods for multiphase flows, highly viscous
-              fluids, corium spreading, and severe-accident applications.
-            </p>
-            <p>
-              I am currently an Assistant Professor at JBNU Quantum Engineering, where I lead research in
-              multiphysics simulation, particle-based CFD, severe-accident analysis, and high-performance
-              computing for advanced nuclear systems.
-            </p>
-            <p>
-              Rather than treating simulation software as a black box, I focus on the complete computational
-              science workflow: formulation, discretization, solver design, parallel implementation,
-              verification, validation, and physical interpretation.
-            </p>
-          </div>
-
-          <ul class="fact-list" aria-label="Research profile">
-            <li><span class="fact-label">Current</span><span class="fact-value">JBNU Quantum Engineering</span></li>
-            <li><span class="fact-label">Degree</span><span class="fact-value">Ph.D., Nuclear Engineering</span></li>
-            <li><span class="fact-label">Focus</span><span class="fact-value">Multiphysics & HPC</span></li>
-            <li><span class="fact-label">Methods</span><span class="fact-value">SPH · CFD · Reactor Physics</span></li>
-            <li><span class="fact-label">Languages</span><span class="fact-value">CUDA C++ · C++ · Python</span></li>
-          </ul>
+          <figure class="profile-card">
+            <img src="figure/PHOTO.jpg" onerror="this.onerror=null;this.src='figure/profile-placeholder.svg';" alt="Portrait of Hee Sang Yoo">
+          </figure>
         </div>
       </div>
     </section>
@@ -1320,22 +1376,18 @@
             <h2>Research experience and academic training.</h2>
           </div>
           <p class="section-intro">
-            My career combines research positions in high-fidelity simulation with advanced academic
-            training in nuclear engineering and high-performance scientific computing.
+            My research experience from Bachelor's to postdoctoral work, including my current position as an Assistant Professor at JBNU Quantum Engineering.
           </p>
         </div>
 
-        <h3 class="experience-subheading" style="margin: 0 0 24px;">Working Experience</h3>
+        <h3 class="experience-subheading" style="margin: 0 0 16px;">Working Experience</h3>
         <ol class="timeline">
           <li class="timeline-item">
             <div class="timeline-date">2026.09–Present</div>
             <div class="timeline-content">
-              <h3>Assistant Professor (조교수)</h3>
-              <p class="timeline-place">JBNU Quantum Engineering, Korea</p>
-              <p>
-                Multiphysics simulation, particle-based CFD, severe-accident analysis, and 
-                high-performance computing for advanced nuclear systems.
-              </p>
+              <h3>Assistant Professor </h3>
+              <p class="timeline-place">JeonBuk National University (JBNU) - Jeanju, Republic of Korea</p>
+              <p>Department of Quantum Systems Engineering</p>
             </div>
           </li>
 
@@ -1343,11 +1395,9 @@
             <div class="timeline-date">2024.11–2026.08</div>
             <div class="timeline-content">
               <h3>Postdoctoral Researcher</h3>
-              <p class="timeline-place">CEA Cadarache, France</p>
-              <p>
-                Multiphysics coupling of APOLLO3® and CATHARE3 for CABRI RIA analysis; local and
-                multidimensional neutronics–thermal-hydraulics feedback modeling.
-              </p>
+              <p class="timeline-place">CEA Cadarache – Saint-Paul-lez-Durance, France,</p>
+              <p>DES/IRESNE/DER/SESI/LEMS (Laboratory of System Modeling)</p>
+              <p>Advisor: Dr. Claire Vaglio-Gaudard</p>
             </div>
           </li>
 
@@ -1355,26 +1405,21 @@
             <div class="timeline-date">2024.03–2024.10</div>
             <div class="timeline-content">
               <h3>Postdoctoral Researcher</h3>
-              <p class="timeline-place">Seoul National University, Korea</p>
-              <p>
-                Particle-based high-fidelity simulation, severe-accident applications, GPU solver
-                development, and collaborative nuclear system modeling.
-              </p>
+              <p class="timeline-place">Seoul National University – Seoul, Republic of Korea</p>
+              <p>Seoul National University Energy Policy Center</p>
+              <p>Advisor: Prof. Eung Soo Kim</p>
             </div>
           </li>
         </ol>
 
-        <h3 class="experience-subheading" id="education" style="margin: 48px 0 24px;">Education</h3>
+        <h3 class="experience-subheading" id="education" style="margin: 30px 0 16px;">Education</h3>
         <ol class="timeline">
           <li class="timeline-item">
             <div class="timeline-date">2017–2024</div>
             <div class="timeline-content">
               <h3>Ph.D. in Nuclear Engineering</h3>
-              <p class="timeline-place">Seoul National University, Korea</p>
-              <p>
-                Dissertation: <em>Multiphase ALE-SPH for Versatile Approaches on Highly Viscous
-                Corium Simulation</em>. Advisor: Prof. Eung Soo Kim.
-              </p>
+              <p class="timeline-place">Seoul National University – Seoul, Republic of Korea</p>
+              <p>Advisor: Prof. Eung Soo Kim</p>
             </div>
           </li>
 
@@ -1382,11 +1427,7 @@
             <div class="timeline-date">2013–2017</div>
             <div class="timeline-content">
               <h3>B.E. in Nuclear Engineering</h3>
-              <p class="timeline-place">Seoul National University, Korea</p>
-              <p>
-                Undergraduate studies in nuclear engineering and leadership experience as chair of
-                an SNU educational outreach club.
-              </p>
+              <p class="timeline-place">Seoul National University – Seoul, Republic of Korea</p>
             </div>
           </li>
         </ol>
@@ -1398,7 +1439,7 @@
         <div class="section-heading">
           <div>
             <p class="section-kicker">Publications</p>
-            <h2>Research outputs across papers, conferences, and software.</h2>
+            <h2>Research Publications</h2>
           </div>
           <p class="section-intro">
             Journal articles, conference presentations, and scientific software reflecting the full
@@ -1410,101 +1451,94 @@
         <ol class="publication-list">
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">15</span>2026</div>
-            <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">From Water to Dielectric Fluids: Pool Boiling Research under Pressure and Subcooling for Next-Generation Cooling</p><p class="publication-meta">S. J. Kim, H. J. Yong, <strong>H. S. Yoo</strong>, and I. W. Park · <em>Renewable and Sustainable Energy Reviews</em>, 116852</p></div>
+            <div class="publication-figure"><img src="figure/publications/j15.jpg" alt="Pool boiling regimes and heat-flux curve"></div>
+            <div><p class="publication-title">From Water to Dielectric Fluids: Pool Boiling Research under Pressure and Subcooling for Next-Generation Cooling</p><p class="publication-authors">Sung Jin Kim, Hyunjin Yong, <strong>Hee Sang Yoo</strong>, and Il Woong Park</p><p class="publication-journal"><em>Renewable and Sustainable Energy Reviews</em>, 116852</p></div>
             <a class="publication-link" href="https://doi.org/10.1016/j.rser.2026.116852" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">14</span>2026</div>
-            <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">Dynamic Load Balancing for Multi-GPU Smoothed Particle Hydrodynamics Using Two-Dimensional Staggered Domain Decomposition</p><p class="publication-meta">Y. L. Ahn, N. J. Choi, <strong>H. S. Yoo</strong>, and E. S. Kim · <em>Advances in Engineering Software</em>, 216, 104123</p></div>
+            <div class="publication-figure"><img src="figure/publications/j14.jpg" alt="Two-dimensional staggered domain decomposition for multi-GPU SPH"></div>
+            <div><p class="publication-title">Dynamic Load Balancing for Multi-GPU Smoothed Particle Hydrodynamics Using Two-Dimensional Staggered Domain Decomposition</p><p class="publication-authors">Yelyn Ahn, Namjae Choi, <strong>Hee Sang Yoo</strong>, and Eung Soo Kim</p><p class="publication-journal"><em>Advances in Engineering Software</em>, 216, 104123</p></div>
             <a class="publication-link" href="https://doi.org/10.1016/j.advengsoft.2026.104123" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">13</span>2026</div>
             <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">A Steady-State Eulerian Smoothed Particle Hydrodynamics (SPH) Approach for Incompressible Flow and Heat Transfer Using the Semi-Implicit Method for Pressure-Linked Equations (SIMPLE) Algorithm</p><p class="publication-meta">T. H. Kim, <strong>H. S. Yoo</strong>, J. W. Kim, and E. S. Kim · <em>International Journal for Numerical Methods in Engineering</em>, 127(1), e70255</p></div>
+            <div><p class="publication-title">A Steady-State Eulerian Smoothed Particle Hydrodynamics (SPH) Approach for Incompressible Flow and Heat Transfer Using the Semi-Implicit Method for Pressure-Linked Equations (SIMPLE) Algorithm</p><p class="publication-authors">Tae Hwan Kim, <strong>Hee Sang Yoo</strong>, Jin-Woo Kim, and Eung Soo Kim</p><p class="publication-journal"><em>International Journal for Numerical Methods in Engineering</em>, 127(1), e70255</p></div>
             <a class="publication-link" href="https://doi.org/10.1002/nme.70255" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">12</span>2025</div>
-            <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">Coupled EISPH–OSPD Framework for Modeling Hydroelastic Response and Brittle Fracture</p><p class="publication-meta"><strong>H. S. Yoo</strong> and E. S. Kim · <em>Computational Mechanics</em>, 77(4), 1025–1059</p></div>
+            <div class="publication-figure"><img src="figure/publications/j12.png" alt="EISPH and OSPD particle coupling schematic"></div>
+            <div><p class="publication-title">Coupled EISPH–OSPD Framework for Modeling Hydroelastic Response and Brittle Fracture</p><p class="publication-authors"><strong>Hee Sang Yoo</strong> and Eung Soo Kim</p><p class="publication-journal"><em>Computational Mechanics</em>, 77(4), 1025–1059</p></div>
             <a class="publication-link" href="https://doi.org/10.1007/s00466-025-02697-z" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">11</span>2025</div>
-            <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">Comparative Evaluation of Matrix-Free Implicit Viscosity Solvers for GPU-Accelerated SPH Simulation of Highly Viscous Fluids</p><p class="publication-meta"><strong>H. S. Yoo</strong> and E. S. Kim · <em>Computational Particle Mechanics</em>, 12, 4107–4130</p></div>
+            <div class="publication-figure"><img src="figure/publications/j11.jpg" alt="SPH support domain for implicit viscosity solvers"></div>
+            <div><p class="publication-title">Comparative Evaluation of Matrix-Free Implicit Viscosity Solvers for GPU-Accelerated SPH Simulation of Highly Viscous Fluids</p><p class="publication-authors"><strong>Hee Sang Yoo</strong> and Eung Soo Kim</p><p class="publication-journal"><em>Computational Particle Mechanics</em>, 12, 4107–4130</p></div>
             <a class="publication-link" href="https://doi.org/10.1007/s40571-025-01071-3" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">10</span>2025</div>
-            <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">GPU-Parallelized SPH Solver for Accurate Hypervelocity Impact Simulation of Shaped Charge Jet Penetration in Concrete Structures</p><p class="publication-meta">. H. Kim, <strong>H. S. Yoo</strong>, Y. B. Jo, S. S. Park, and E. S. Kim · <em>International Journal of Fracture</em>, 249(3), 52</p></div>
+            <div class="publication-figure"><img src="figure/publications/j10.png" alt="SPH kernel and support-domain schematic for impact simulation"></div>
+            <div><p class="publication-title">GPU-Parallelized SPH Solver for Accurate Hypervelocity Impact Simulation of Shaped Charge Jet Penetration in Concrete Structures</p><p class="publication-authors">Jin Hyun Kim, <strong>Hee Sang Yoo</strong>, Young Beom Jo, and Eung Soo Kim</p><p class="publication-journal"><em>International Journal of Fracture</em>, 249(3), 52</p></div>
             <a class="publication-link" href="https://doi.org/10.1007/s10704-025-00868-w" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">9</span>2024</div>
-            <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">Numerical Investigation of Spreading Phenomena of Molten Corium Using EISPH Method</p><p class="publication-meta"><strong>H. S. Yoo</strong> and E. S. Kim · <em>Nuclear Engineering and Technology</em>, 57(4), 103301</p></div>
+            <div class="publication-figure"><img src="figure/publications/j9.jpg" alt="Computational workflow for molten-corium spreading analysis"></div>
+            <div><p class="publication-title">Numerical Investigation of Spreading Phenomena of Molten Corium Using EISPH Method</p><p class="publication-authors"><strong>Hee Sang Yoo</strong> and Eung Soo Kim</p><p class="publication-journal"><em>Nuclear Engineering and Technology</em>, 57(4), 103301</p></div>
             <a class="publication-link" href="https://doi.org/10.1016/j.net.2024.11.003" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">8</span>2024</div>
-            <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">Simulation of Shockwave Propagation Characteristics in Nuclear Reactor Cavity During External Steam Explosion Using Unified SPH</p><p class="publication-meta">. H. Kim, <strong>H. S. Yoo</strong>, Y. B. Jo, and E. S. Kim · <em>Nuclear Engineering and Technology</em>, 57(4), 103274</p></div>
+            <div class="publication-figure"><img src="figure/publications/j8.jpg" alt="Unified SPH kernel approximation for steam-explosion analysis"></div>
+            <div><p class="publication-title">Simulation of Shockwave Propagation Characteristics in Nuclear Reactor Cavity During External Steam Explosion Using Unified SPH</p><p class="publication-authors">Jin Hyun Kim, <strong>Hee Sang Yoo</strong>, Young Beom Jo, and Eung Soo Kim</p><p class="publication-journal"><em>Nuclear Engineering and Technology</em>, 57(4), 103274</p></div>
             <a class="publication-link" href="https://doi.org/10.1016/j.net.2024.10.036" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">7</span>2024</div>
             <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">Dynamic Load Balancing of Multi-GPU Parallelization for VULCANO VE-U7 Corium Spreading Analysis Using SOPHIA</p><p class="publication-meta">Y. L. Ahn, <strong>H. S. Yoo</strong>, N. J. Choi, and E. S. Kim · <em>Nuclear Technology</em>, 211(6), 1316–1336</p></div>
+            <div><p class="publication-title">Dynamic Load Balancing of Multi-GPU Parallelization for VULCANO VE-U7 Corium Spreading Analysis Using SOPHIA</p><p class="publication-authors">Yelyn Ahn, <strong>Hee Sang Yoo</strong>, Namjae Choi, and Eung Soo Kim</p><p class="publication-journal"><em>Nuclear Technology</em>, 211(6), 1316–1336</p></div>
             <a class="publication-link" href="https://doi.org/10.1080/00295450.2024.2397617" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">6</span>2024</div>
-            <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">Comparative Study of WCSPH, EISPH and Explicit Incompressible-Compressible SPH (EICSPH) for Multi-Phase Flow with High Density Difference</p><p class="publication-meta"><strong>H. S. Yoo</strong>, Y. B. Jo, and E. S. Kim · <em>ournal of Computational Physics</em>, 112930</p></div>
+            <div class="publication-figure"><img src="figure/publications/j6.jpg" alt="Comparison of WCSPH and incompressible SPH solution procedures"></div>
+            <div><p class="publication-title">Comparative Study of WCSPH, EISPH and Explicit Incompressible-Compressible SPH (EICSPH) for Multi-Phase Flow with High Density Difference</p><p class="publication-authors"><strong>Hee Sang Yoo</strong>, Young Beom Jo, and Eung Soo Kim</p><p class="publication-journal"><em>Journal of Computational Physics</em>, 112930</p></div>
             <a class="publication-link" href="https://doi.org/10.1016/j.jcp.2024.112930" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">5</span>2023</div>
             <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">A Simple Eulerian–Lagrangian Weakly Compressible Smoothed Particle Hydrodynamics Method for Fluid Flow and Heat Transfer</p><p class="publication-meta"><strong>H. S. Yoo</strong>, Y. B. Jo, J. W. Kim, E. S. Kim, and T. S. Choi · <em>International Journal for Numerical Methods in Engineering</em>, 124(4), 928–958 · Featured Cover</p></div>
+            <div><p class="publication-title">A Simple Eulerian–Lagrangian Weakly Compressible Smoothed Particle Hydrodynamics Method for Fluid Flow and Heat Transfer</p><p class="publication-authors"><strong>Hee Sang Yoo</strong>, Young Beom Jo, Jin Woo Kim, Eung Soo Kim, and Tae Soo Choi</p><p class="publication-journal"><em>International Journal for Numerical Methods in Engineering</em>, 124(4), 928–958, Featured Cover</p></div>
             <a class="publication-link" href="https://doi.org/10.1002/nme.7148" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">4</span>2022</div>
-            <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">GPU-Based SPH-DEM Method to Examine the Three-Phase Hydrodynamic Interactions Between Multiphase Flow and Solid Particles</p><p class="publication-meta">Y. B. Jo, S. H. Park, <strong>H. S. Yoo</strong>, and E. S. Kim · <em>International Journal of Multiphase Flow</em>, 153, 104125</p></div>
+            <div class="publication-figure"><img src="figure/publications/j4.jpg" alt="SPH kernel approximation and particle support domain"></div>
+            <div><p class="publication-title">GPU-Based SPH-DEM Method to Examine the Three-Phase Hydrodynamic Interactions Between Multiphase Flow and Solid Particles</p><p class="publication-authors">Young Beom Jo, So-Hyun Park, <strong>Hee Sang Yoo</strong>, and Eung Soo Kim</p><p class="publication-journal"><em>International Journal of Multiphase Flow</em>, 153, 104125</p></div>
             <a class="publication-link" href="https://doi.org/10.1016/j.ijmultiphaseflow.2022.104125" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">3</span>2022</div>
             <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">Effect of Wettability on the Water Entry of Spherical Projectiles: Numerical Analysis Using Smoothed Particle Hydrodynamics</p><p class="publication-meta"><strong>H. S. Yoo</strong>, H. Y. Choi, T. H. Kim, and E. S. Kim · <em>AIP Advances</em>, 12(3), 035014</p></div>
+            <div><p class="publication-title">Effect of Wettability on the Water Entry of Spherical Projectiles: Numerical Analysis Using Smoothed Particle Hydrodynamics</p><p class="publication-authors"><strong>Hee Sang Yoo</strong>, Hae Yoon Choi, Tae Hwan Kim, and Eung Soo Kim</p><p class="publication-journal"><em>AIP Advances</em>, 12(3), 035014</p></div>
             <a class="publication-link" href="https://doi.org/10.1063/5.0072710" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">2</span>2020</div>
-            <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">Development of Multi-GPU-Based Smoothed Particle Hydrodynamics Code for Nuclear Thermal Hydraulics and Safety: Potential and Challenges</p><p class="publication-meta">S. H. Park, Y. B. Jo, Y. Ahn, H. Y. Choi, T. S. Choi, S. S. Park, <strong>H. S. Yoo</strong>, J. W. Kim, and E. S. Kim · <em>Frontiers in Energy Research</em>, 8, 86</p></div>
+            <div class="publication-figure"><img src="figure/publications/j2.png" alt="SPH smoothing kernel and support-domain definition"></div>
+            <div><p class="publication-title">Development of Multi-GPU-Based Smoothed Particle Hydrodynamics Code for Nuclear Thermal Hydraulics and Safety: Potential and Challenges</p><p class="publication-authors">So-Hyun Park, Young Beom Jo, Yelyn Ahn, Hae Yoon Choi, Tae Soo Choi, Su-San Park, <strong>Hee Sang Yoo</strong>, Jin Woo Kim, and Eung Soo Kim</p><p class="publication-journal"><em>Frontiers in Energy Research</em>, 8, 86</p></div>
             <a class="publication-link" href="https://doi.org/10.3389/fenrg.2020.00086" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">1</span>2019</div>
-            <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
-            <div><p class="publication-title">Heat Transfer Enhancement in Dry Cask Storage for Nuclear Spent Fuel Using Additive High Density Inert Gas</p><p class="publication-meta"><strong>H. S. Yoo</strong>, S. H. Yoo, and E. S. Kim · <em>Annals of Nuclear Energy</em>, 132, 108–118</p></div>
+            <div class="publication-figure"><img src="figure/publications/j1.jpg" alt="Dry-cask heat-transfer performance with inert-gas mixtures"></div>
+            <div><p class="publication-title">Heat Transfer Enhancement in Dry Cask Storage for Nuclear Spent Fuel Using Additive High Density Inert Gas</p><p class="publication-authors"><strong>Hee Sang Yoo</strong>, Seung Hun Yoo, and Eung Soo Kim</p><p class="publication-journal"><em>Annals of Nuclear Energy</em>, 132, 108–118</p></div>
             <a class="publication-link" href="https://doi.org/10.1016/j.anucene.2019.04.018" target="_blank" rel="noopener">DOI ↗</a>
           </li>
-        </ol>
-
-        <h4 class="publication-subheading minor" style="margin: 36px 0 20px;">In Preparation &amp; Under Review</h4>
-        <ol class="publication-list">
-          <li class="publication-item"><div class="publication-year"><span class="publication-number">J18</span>2026</div><div><p class="publication-title">Implementation of APOLLO3–CATHARE3 Multiphysics Coupling on the C3PO Platform for CABRI Power Transient Studies</p><p class="publication-meta"><strong>H. S. Yoo</strong>, J. Debove, C. Vaglio-Gaudard, E.-Y. Garcia-Cervantes, J.-C. Jaboulay, and J.-M. Labit · <em>Annals of Nuclear Energy</em> · In preparation</p></div></li>
-          <li class="publication-item"><div class="publication-year"><span class="publication-number">J17</span>2026</div><div><p class="publication-title">A Coupled EISPH-TLSPH Method for the Fluid-Structure Interaction of Hydroelasticity with Quasi-Brittle Fracture</p><p class="publication-meta">J. W. Kim, <strong>H. S. Yoo</strong>, and E. S. Kim · Under review</p></div></li>
-          <li class="publication-item"><div class="publication-year"><span class="publication-number">J16</span>2026</div><div><p class="publication-title">Effects of Surface Characteristics of Oxidized Zircaloy-4 on Pool Boiling Heat Transfer</p><p class="publication-meta">S. J. Kim, S. M. Song, H. S. Park, <strong>H. S. Yoo</strong>, and I. W. Park · <em>International Communications in Heat and Mass Transfer</em> · Under review (major revision)</p></div></li>
         </ol>
 
         <h3 class="publication-subheading" id="conferences" style="margin: 56px 0 24px;">Conference Presentations</h3>
@@ -1651,39 +1685,6 @@
       </div>
     </section>
 
-    <section class="soft" id="recognition">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker">Selected recognition</p>
-            <h2>Research recognized across journals and conferences.</h2>
-          </div>
-          <p class="section-intro">
-            Use this area for only the most meaningful distinctions; a short list communicates impact
-            more effectively than a long catalogue.
-          </p>
-        </div>
-
-        <div class="award-grid">
-          <article class="award-card">
-            <span class="year">2025</span>
-            <h3>Best Paper Award</h3>
-            <p>NURETH-21.</p>
-          </article>
-          <article class="award-card">
-            <span class="year">2024</span>
-            <h3>Best Paper Award</h3>
-            <p>Korean Nuclear Society Spring Meeting.</p>
-          </article>
-          <article class="award-card">
-            <span class="year">2022–2023</span>
-            <h3>Editorial Recognition</h3>
-            <p>AIP Advances Editor’s Pick and IJNME Featured Cover.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section id="contact">
       <div class="container">
         <div class="contact-panel">
@@ -1714,6 +1715,11 @@
       </div>
     </section>
   </main>
+
+  <div class="image-lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged publication image" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="Close enlarged image">&times;</button>
+    <img src="" alt="">
+  </div>
 
   <footer>
     <div class="container">© <span id="current-year"></span> Hee Sang Yoo. Built for GitHub Pages.</div>
@@ -1755,6 +1761,50 @@
         navLinks.classList.remove('open');
         menuButton.setAttribute('aria-expanded', 'false');
       });
+    });
+
+    const lightbox = document.querySelector('#image-lightbox');
+    const lightboxImage = lightbox.querySelector('img');
+    const lightboxClose = lightbox.querySelector('.lightbox-close');
+    let lastFocusedImage = null;
+
+    function openLightbox(image) {
+      lastFocusedImage = image;
+      lightboxImage.src = image.currentSrc || image.src;
+      lightboxImage.alt = image.alt;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lightbox-open');
+      lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lightbox-open');
+      lightboxImage.src = '';
+      if (lastFocusedImage) lastFocusedImage.focus();
+    }
+
+    document.querySelectorAll('.publication-figure img').forEach((image) => {
+      image.setAttribute('tabindex', '0');
+      image.setAttribute('role', 'button');
+      image.setAttribute('aria-label', `${image.alt}. Click to enlarge.`);
+      image.addEventListener('click', () => openLightbox(image));
+      image.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openLightbox(image);
+        }
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
     });
 
     document.querySelector('#current-year').textContent = new Date().getFullYear();
