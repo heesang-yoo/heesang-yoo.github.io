@@ -717,6 +717,14 @@
       font-size: 17px;
     }
 
+    .conference-group-heading {
+      margin: 0 0 18px;
+      color: var(--teal);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      letter-spacing: .01em;
+    }
+
     #experience .section-heading {
       grid-template-columns: 1fr;
       margin-bottom: 28px;
@@ -914,9 +922,7 @@
 
     .featured-paper {
       flex: 0 0 100%;
-      display: grid;
-      grid-template-columns: minmax(320px, .82fr) 1.18fr;
-      align-items: stretch;
+      display: block;
       min-width: 0;
       overflow: hidden;
       border: 1px solid var(--line);
@@ -927,9 +933,9 @@
     }
 
     .featured-paper-page {
-      height: 570px;
+      height: min(760px, 78vw);
       overflow: hidden;
-      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
       background: var(--surface-soft);
     }
 
@@ -948,12 +954,8 @@
     }
 
     .featured-paper-meta {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
       margin: 0;
-      padding: clamp(34px, 6vw, 70px);
+      padding: 22px 26px 25px;
     }
 
     .featured-paper-meta span {
@@ -964,14 +966,25 @@
     }
 
     .featured-paper-meta h4 {
-      margin: 10px 0 24px;
+      margin: 7px 0 8px;
       color: var(--navy);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.18;
+      font-size: 20px;
+      font-weight: 850;
+      line-height: 1.35;
+    }
+
+    .featured-paper-summary {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     .featured-paper-meta a {
+      display: inline-block;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
       color: var(--teal);
       font-size: 13px;
       font-weight: 800;
@@ -993,18 +1006,12 @@
         gap: 5px;
       }
 
-      .featured-paper {
-        grid-template-columns: 1fr;
-      }
-
       .featured-paper-page {
-        height: min(520px, 118vw);
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
+        height: min(620px, 118vw);
       }
 
       .featured-paper-meta {
-        padding: 30px 26px 34px;
+        padding: 20px 20px 23px;
       }
     }
 
@@ -1441,6 +1448,10 @@
       color: #8ce1dc;
     }
 
+    html[data-theme="dark"] .conference-group-heading {
+      color: #8ce1dc;
+    }
+
     html[data-theme="dark"] .best-paper-badge {
       border-color: #d6a64b;
       color: #ffe4a3;
@@ -1686,7 +1697,7 @@
                 <span>COMING SOON</span>
               </div>
               <div class="highlight-copy">
-                <p class="section-kicker">News 3</p>
+                <p class="section-kicker">Upcoming Update</p>
                 <h3>Coming Soon</h3>
                 <p>New research and academic updates will be shared here.</p>
               </div>
@@ -1699,7 +1710,7 @@
                 <span>COMING SOON</span>
               </div>
               <div class="highlight-copy">
-                <p class="section-kicker">News 2</p>
+                <p class="section-kicker">Upcoming Update</p>
                 <h3>Coming Soon</h3>
                 <p>New research and academic updates will be shared here.</p>
               </div>
@@ -1710,8 +1721,8 @@
                 <img src="news/news1.webp" alt="Hee Sang Yoo presenting at PHYSOR 2026 in Turin">
               </div>
               <div class="highlight-copy">
-                <p class="section-kicker">News 1 · PHYSOR 2026</p>
-                <h3>Multiphysics coupling for CABRI power transients</h3>
+                <p class="section-kicker">PHYSOR 2026 · Turin, Italy</p>
+                <h3>I PRESENTED OUR WORK AT PHYSOR 2026 IN TURIN!</h3>
                 <p>
                   I was pleased to present “Multiphysics Coupling of APOLLO3 and CATHARE3 via the C3PO
                   Platform for Analysis of CABRI Power Transients” at PHYSOR 2026 in Turin, Italy.
@@ -1829,7 +1840,8 @@
               <div class="featured-paper-meta">
                 <span>J16 - 2026</span>
                 <h4>From Water to Dielectric Fluids</h4>
-                <a href="figure/publications/papers/%28J16%29%20Kim%20RSER%202026.pdf" target="_blank" rel="noopener">View paper &nearr;</a>
+                <p class="featured-paper-summary">This review clarifies how pressure and subcooling govern boiling performance in dielectric fluids for next-generation cooling systems.</p>
+                <a href="https://doi.org/10.1016/j.rser.2026.116852" target="_blank" rel="noopener">DOI &nearr;</a>
               </div>
             </article>
 
@@ -1840,7 +1852,8 @@
               <div class="featured-paper-meta">
                 <span>J15 - 2026</span>
                 <h4>Effects of Surface Characteristics of Oxidized Zircaloy-4</h4>
-                <a href="figure/publications/papers/%28J15%29%20Kim%20ICHMT%202026.pdf" target="_blank" rel="noopener">View paper &nearr;</a>
+                <p class="featured-paper-summary">The study reveals how oxide-layer thickness, wettability, and crack orientation govern pool-boiling heat transfer on Zircaloy-4.</p>
+                <a href="https://doi.org/10.1016/j.icheatmasstransfer.2026.111277" target="_blank" rel="noopener">DOI &nearr;</a>
               </div>
             </article>
 
@@ -1851,7 +1864,8 @@
               <div class="featured-paper-meta">
                 <span>J14 - 2026</span>
                 <h4>Dynamic Load Balancing for Multi-GPU SPH</h4>
-                <a href="figure/publications/papers/%28J14%29%20Ahn%202025%20software.pdf" target="_blank" rel="noopener">View paper &nearr;</a>
+                <p class="featured-paper-summary">A two-dimensional staggered domain-decomposition strategy improves load balance and scalability for large multi-GPU SPH simulations.</p>
+                <a href="https://doi.org/10.1016/j.advengsoft.2026.104123" target="_blank" rel="noopener">DOI &nearr;</a>
               </div>
             </article>
           </div>
@@ -1952,127 +1966,30 @@
           </li>
         </ol>
 
-        <h3 class="publication-subheading" id="conferences" style="margin: 56px 0 24px;">Conference Presentations</h3>
+        <h3 class="publication-subheading" id="conferences" style="margin: 56px 0 24px;">Conference Publications</h3>
+
+        <h4 class="conference-group-heading">International Conferences</h4>
         <ol class="publication-list" style="font-size: 14px;">
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">15</span>2026</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">Multiphysics Coupling of APOLLO3 and CATHARE3 via the C3PO Platform for Analysis of CABRI Power Transients</p>
-              <p class="publication-meta"><strong>H. S. Yoo</strong>, J. Debove, C. Vaglio-Gaudard, E.-Y. Garcia-Cervantes, J.-C. Jaboulay, and J.-M. Labit · PHYSOR 2026 · Turin, Italy · April 19–23, 2026</p>
-            </div>
-          </li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">7</span>2026</div><div><p class="publication-title" style="font-size: 15px;">Multiphysics Coupling of APOLLO3 and CATHARE3 via the C3PO Platform for Analysis of CABRI Power Transients</p><p class="publication-meta"><strong>H. S. Yoo</strong>, J. Debove, C. Vaglio-Gaudard, E.-Y. Garcia-Cervantes, J.-C. Jaboulay, and J.-M. Labit · PHYSOR 2026 · Turin, Italy · April 19–23, 2026</p></div></li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">6</span>2025</div><div><p class="publication-title" style="font-size: 15px;">A Smoothed Particle Hydrodynamics Model for Safety Assessment of the Ex-vessel Core Catcher under Reactor Vessel Failure</p><p class="publication-meta">J. W. Kim, <strong>H. S. Yoo</strong>, T. H. Lee, Y. Ahn, M. C. Kwon, and E. S. Kim · NURETH-21 · Busan, Korea · August 31–September 5, 2025 <span class="best-paper-badge">Best Paper</span></p></div></li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">5</span>2025</div><div><p class="publication-title" style="font-size: 15px;">Particle-Based Approaches to Multiphysics Simulation in Nuclear Safety</p><p class="publication-meta">E. S. Kim, Y. Ahn, J. W. Kim, J. H. Kim, J. Park, Y. B. Jo, and <strong>H. S. Yoo</strong> · NURETH-21 · Busan, Korea · August 31–September 5, 2025</p></div></li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">4</span>2024</div><div><p class="publication-title" style="font-size: 15px;">Numerical Investigation on the Safety Assessment of an Ex-vessel Core Catcher under Large-break Reactor Vessel Failures Using Smoothed Particle Hydrodynamics</p><p class="publication-meta">J. W. Kim, <strong>H. S. Yoo</strong>, T. H. Lee, Y. Ahn, M. C. Kwon, and E. S. Kim · The Eleventh Korea-Japan Symposium on Nuclear Thermal Hydraulics and Safety · Seoul, Korea · November 10–13, 2024</p></div></li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">3</span>2022</div><div><p class="publication-title" style="font-size: 15px;">GPU-accelerated Explicit Incompressible-Compressible SPH for multi-phase flow with large density difference</p><p class="publication-meta"><strong>H. S. Yoo</strong>, Y. B. Jo, and E. S. Kim · Proceedings of the SPHERIC Workshop · Catania, Italy</p></div></li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">2</span>2018</div><div><p class="publication-title" style="font-size: 15px;">Heat Transfer Enhancement of Dry Cask Storage System Using Binary Helium and Heavy Inert Gas Mixture</p><p class="publication-meta"><strong>H. S. Yoo</strong>, S. H. Yoo, and E. S. Kim · The Eleventh Korea-Japan Symposium on Nuclear Thermal Hydraulics and Safety · Busan, Korea · November 18–21, 2018</p></div></li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">1</span>2017</div><div><p class="publication-title" style="font-size: 15px;">The Investigation of Flow Characteristics in 3-Pin Wire-Wrapped Fuel Bundle Using Laser-Based Measurement Techniques</p><p class="publication-meta">M. S. Song, <strong>H. S. Yoo</strong>, J. H. Kim, and E. S. Kim · NURETH-17 · Xi'an, China · September 3–8, 2017</p></div></li>
+        </ol>
 
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">14</span>2025</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">A Smoothed Particle Hydrodynamics Model for Safety Assessment of the Ex-vessel Core Catcher under Reactor Vessel Failure</p>
-              <p class="publication-meta">J. W. Kim, <strong>H. S. Yoo</strong>, T. H. Lee, Y. Ahn, M. C. Kwon, and E. S. Kim · NURETH-21 · Busan, Korea · August 31–September 5, 2025 <span class="best-paper-badge">Best Paper</span></p>
-            </div>
-          </li>
-
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">13</span>2025</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">Particle-Based Approaches to Multiphysics Simulation in Nuclear Safety</p>
-              <p class="publication-meta">E. S. Kim, Y. Ahn, J. W. Kim, J. H. Kim, J. Park, Y. B. Jo, and <strong>H. S. Yoo</strong> · NURETH-21 · Busan, Korea · August 31–September 5, 2025</p>
-            </div>
-          </li>
-
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">12</span>2025</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">Numerical Analysis of Melting and Interfacial Flow in a Direct-Contact Latent Heat Storage System Reflecting the Marangoni Effect</p>
-              <p class="publication-meta">M. H. Kim, <strong>H. S. Yoo</strong>, and I. W. Park · Korean Society for Fluid Machinery · Jeju, Korea · December 4–5, 2025 · In Korean</p>
-            </div>
-          </li>
-
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">11</span>2024</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">Numerical Investigation on the Safety Assessment of an Ex-vessel Core Catcher under Large-break Reactor Vessel Failures Using Smoothed Particle Hydrodynamics</p>
-              <p class="publication-meta">J. W. Kim, <strong>H. S. Yoo</strong>, T. H. Lee, Y. Ahn, M. C. Kwon, and E. S. Kim · The Eleventh Korea-Japan Symposium on Nuclear Thermal Hydraulics and Safety · Seoul, Korea · November 10–13, 2024</p>
-            </div>
-          </li>
-
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">10</span>2024</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">Numerical Investigation of Corium Spreading Phenomena using Smoothed Particle Hydrodynamics</p>
-              <p class="publication-meta"><strong>H. S. Yoo</strong> and E. S. Kim · Transactions of the Korean Nuclear Society Spring Meeting · Jeju, Korea · May 9–10, 2024 · In Korean <span class="best-paper-badge">Best Paper</span></p>
-            </div>
-          </li>
-
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">9</span>2024</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">Dynamic Modeling for 20 kWe Heat Pipe Fission Battery with Dual Power Conversion System</p>
-              <p class="publication-meta">K. J. Park, T. H. Kim, <strong>H. S. Yoo</strong>, Y. B. Jo, and E. S. Kim · Transactions of the Korean Nuclear Society Spring Meeting · Jeju, Korea · May 9–10, 2024 · In Korean</p>
-            </div>
-          </li>
-
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">8</span>2023</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">Dynamic Modeling of Free Piston Stirling Generator for Micro Nuclear Reactors</p>
-              <p class="publication-meta">K. J. Park, T. H. Kim, <strong>H. S. Yoo</strong>, E. S. Kim, and Y. B. Jo · Transactions of the Korean Nuclear Society Autumn Meeting · Gyeongju, Korea · October 25–27, 2023 · In Korean <span class="best-paper-badge">Best Paper</span></p>
-            </div>
-          </li>
-
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">7</span>2022</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">GPU-accelerated Explicit Incompressible-Compressible SPH for multi-phase flow with large density difference</p>
-              <p class="publication-meta"><strong>H. S. Yoo</strong>, Y. B. Jo, and E. S. Kim · Proceedings of the SPHERIC Workshop · Catania, Italy</p>
-            </div>
-          </li>
-
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">6</span>2021</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">Development of an Eulerian–Lagrangian Coupling Method Using SPH</p>
-              <p class="publication-meta"><strong>H. S. Yoo</strong> and E. S. Kim · Proceedings of the KSCFE Conference · Seoul National University Siheung Campus, Korea · In Korean</p>
-            </div>
-          </li>
-
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">5</span>2021</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">omparative Analysis of Recent Pressure-Noise Reduction Methods for Free-Surface Flow and Fluid–Structure Interaction Using SPH</p>
-              <p class="publication-meta"><strong>H. S. Yoo</strong> and E. S. Kim · Proceedings of the KSOE Conference · Busan, Korea · In Korean</p>
-            </div>
-          </li>
-
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">4</span>2021</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">Numerical Simulation on Spreading and Impact Behavior of a Single Droplet Using Smoothed Particle Hydrodynamics</p>
-              <p class="publication-meta"><strong>H. S. Yoo</strong>, T. H. Kim, and E. S. Kim · Transactions of the Korean Nuclear Society Virtual Autumn Meeting · October 21–22, 2021 · In Korean</p>
-            </div>
-          </li>
-
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">3</span>2018</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">Heat Transfer Enhancement of Dry Cask Storage System Using Binary Helium and Heavy Inert Gas Mixture</p>
-              <p class="publication-meta"><strong>H. S. Yoo</strong>, S. H. Yoo, and E. S. Kim · The Eleventh Korea-Japan Symposium on Nuclear Thermal Hydraulics and Safety · Busan, Korea · November 18–21, 2018</p>
-            </div>
-          </li>
-
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">2</span>2018</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">Thermal Performance Enhancement of Dry Cask Storage System Using Helium-Based Binary Gaseous Mixture</p>
-              <p class="publication-meta"><strong>H. S. Yoo</strong>, E. S. Kim, and S. H. Yoo · Transactions of the Korean Nuclear Society Autumn Meeting · Yeosu, Korea · October 25–26, 2018 · In Korean <span class="best-poster-badge">Best Poster</span></p>
-            </div>
-          </li>
-
-          <li class="publication-item">
-            <div class="publication-year"><span class="publication-number">1</span>2017</div>
-            <div>
-              <p class="publication-title" style="font-size: 15px;">The Investigation of Flow Characteristics in 3-Pin Wire-Wrapped Fuel Bundle Using Laser-Based Measurement Techniques</p>
-              <p class="publication-meta">M. S. Song, <strong>H. S. Yoo</strong>, J. H. Kim, and E. S. Kim · NURETH-17 · Xi'an, China · September 3–8, 2017</p>
-            </div>
-          </li>
+        <h4 class="conference-group-heading" style="margin-top: 38px;">Domestic Conferences</h4>
+        <ol class="publication-list" style="font-size: 14px;">
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">9</span>2026</div><div><p class="publication-title" style="font-size: 15px;">CABRI</p></div></li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">8</span>2025</div><div><p class="publication-title" style="font-size: 15px;">Numerical Analysis of Melting and Interfacial Flow in a Direct-Contact Latent Heat Storage System Reflecting the Marangoni Effect</p><p class="publication-meta">M. H. Kim, <strong>H. S. Yoo</strong>, and I. W. Park · Korean Society for Fluid Machinery · Jeju, Korea · December 4–5, 2025</p></div></li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">7</span>2024</div><div><p class="publication-title" style="font-size: 15px;">Numerical Investigation of Corium Spreading Phenomena using Smoothed Particle Hydrodynamics</p><p class="publication-meta"><strong>H. S. Yoo</strong> and E. S. Kim · Transactions of the Korean Nuclear Society Spring Meeting · Jeju, Korea · May 9–10, 2024 <span class="best-paper-badge">Best Paper</span></p></div></li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">6</span>2024</div><div><p class="publication-title" style="font-size: 15px;">Dynamic Modeling for 20 kWe Heat Pipe Fission Battery with Dual Power Conversion System</p><p class="publication-meta">K. J. Park, T. H. Kim, <strong>H. S. Yoo</strong>, Y. B. Jo, and E. S. Kim · Transactions of the Korean Nuclear Society Spring Meeting · Jeju, Korea · May 9–10, 2024</p></div></li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">5</span>2023</div><div><p class="publication-title" style="font-size: 15px;">Dynamic Modeling of Free Piston Stirling Generator for Micro Nuclear Reactors</p><p class="publication-meta">K. J. Park, T. H. Kim, <strong>H. S. Yoo</strong>, E. S. Kim, and Y. B. Jo · Transactions of the Korean Nuclear Society Autumn Meeting · Gyeongju, Korea · October 25–27, 2023 <span class="best-paper-badge">Best Paper</span></p></div></li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">4</span>2021</div><div><p class="publication-title" style="font-size: 15px;">Development of an Eulerian–Lagrangian Coupling Method Using SPH</p><p class="publication-meta"><strong>H. S. Yoo</strong> and E. S. Kim · Proceedings of the KSCFE Conference · Seoul National University Siheung Campus, Korea</p></div></li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">3</span>2021</div><div><p class="publication-title" style="font-size: 15px;">Comparative Analysis of Recent Pressure-Noise Reduction Methods for Free-Surface Flow and Fluid–Structure Interaction Using SPH</p><p class="publication-meta"><strong>H. S. Yoo</strong> and E. S. Kim · Proceedings of the KSOE Conference · Busan, Korea</p></div></li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">2</span>2021</div><div><p class="publication-title" style="font-size: 15px;">Numerical Simulation on Spreading and Impact Behavior of a Single Droplet Using Smoothed Particle Hydrodynamics</p><p class="publication-meta"><strong>H. S. Yoo</strong>, T. H. Kim, and E. S. Kim · Transactions of the Korean Nuclear Society Virtual Autumn Meeting · October 21–22, 2021</p></div></li>
+          <li class="publication-item"><div class="publication-year"><span class="publication-number">1</span>2018</div><div><p class="publication-title" style="font-size: 15px;">Thermal Performance Enhancement of Dry Cask Storage System Using Helium-Based Binary Gaseous Mixture</p><p class="publication-meta"><strong>H. S. Yoo</strong>, E. S. Kim, and S. H. Yoo · Transactions of the Korean Nuclear Society Autumn Meeting · Yeosu, Korea · October 25–26, 2018 <span class="best-poster-badge">Best Poster</span></p></div></li>
         </ol>
 
         <h3 class="publication-subheading" id="software" style="margin: 56px 0 24px;">Software</h3>
