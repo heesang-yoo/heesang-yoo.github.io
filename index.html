@@ -384,6 +384,7 @@
     }
 
     .research-card {
+      display: block;
       position: relative;
       overflow: hidden;
       min-height: 350px;
@@ -392,12 +393,18 @@
       border-radius: var(--radius);
       background: #fff;
       box-shadow: 0 8px 26px rgba(11, 31, 58, 0.05);
+      text-decoration: none;
       transition: transform 180ms ease, box-shadow 180ms ease;
     }
 
     .research-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 16px 38px rgba(11, 31, 58, 0.10);
+    }
+
+    .research-card:focus-visible {
+      outline: 3px solid rgba(15, 123, 131, .35);
+      outline-offset: 4px;
     }
 
     .research-visual {
@@ -1623,54 +1630,55 @@
         <div class="section-heading">
           <div>
             <p class="section-kicker">Research directions</p>
-            <h2>Computational foundations for virtual reactors.</h2>
+            <h2>High-fidelity computational science for reactor digital twins.</h2>
           </div>
           <p class="section-intro">
-            My long-term goal is to advance high-fidelity, multiphysics, and multiscale technologies
-            that support safer reactor design, best-estimate analysis, and future digital twins.
+            My research integrates particle methods, reactor multiphysics, multiscale modeling, and
+            high-performance computing to develop predictive digital twins for nuclear systems.
           </p>
         </div>
 
         <div class="research-grid">
-          <article class="research-card">
-            <div class="research-visual visual-multiphysics" aria-hidden="true"></div>
-            <span class="research-number">01 · MULTIPHYSICS</span>
-            <h3>Reactor Multiphysics Coupling</h3>
-            <p>
-              Coupling neutronics and thermal hydraulics across 1D, subchannel, and 3D models for
-              local feedback analysis during rapid reactor transients.
-            </p>
-          </article>
-
-          <article class="research-card">
-            <div class="research-visual visual-particles" aria-hidden="true"></div>
-            <span class="research-number">02 · PARTICLE METHODS</span>
-            <h3>Particle-Based CFD & Severe Accidents</h3>
-            <p>
-              SPH methods for multiphase flow, free surfaces, highly viscous corium, spreading,
-              impact, fragmentation, and coupled fluid–structure interaction.
-            </p>
-          </article>
-
-          <article class="research-card">
-            <div class="research-visual visual-hpc" aria-hidden="true"></div>
-            <span class="research-number">03 · HPC</span>
-            <h3>GPU & Parallel Scientific Computing</h3>
-            <p>
-              Matrix-free algorithms, multi-GPU parallelization, dynamic load balancing, and scalable
-              solver design for computationally intensive nuclear engineering problems.
-            </p>
-          </article>
-
-          <article class="research-card">
+          <a class="research-card" href="research/research-direction1.html" aria-label="Learn more about digital twins for severe accidents">
             <div class="research-visual visual-digital" aria-hidden="true"></div>
-            <span class="research-number">04 · DIGITAL ENGINEERING</span>
-            <h3>Virtual Reactors & AI-Assisted Simulation</h3>
+            <span class="research-number">01 · SEVERE ACCIDENTS</span>
+            <h3>Digital Twins for Severe Accidents</h3>
             <p>
-              High-fidelity simulation, uncertainty quantification, reduced-order models, and AI
-              acceleration as enabling layers for predictive digital engineering.
+              Leveraging the flexibility of particle-based methods to explore diverse severe-accident
+              scenarios, including multiphase interaction, corium behavior, spreading, fragmentation,
+              and fluid-structure interaction.
             </p>
-          </article>
+          </a>
+
+          <a class="research-card" href="research/research-direction2.html" aria-label="Learn more about high-fidelity reactor multiphysics analysis">
+            <div class="research-visual visual-multiphysics" aria-hidden="true"></div>
+            <span class="research-number">02 · REACTOR MULTIPHYSICS</span>
+            <h3>High-Fidelity Reactor Multiphysics Analysis</h3>
+            <p>
+              Coupling neutronics and thermal hydraulics across system, subchannel, and three-dimensional
+              models to resolve local feedback and transient behavior with high physical fidelity.
+            </p>
+          </a>
+
+          <a class="research-card" href="research/research-direction3.html" aria-label="Learn more about digital twins for advanced reactors">
+            <div class="research-visual visual-hpc" aria-hidden="true"></div>
+            <span class="research-number">03 · ADVANCED REACTORS</span>
+            <h3>Digital Twins for Advanced Reactors</h3>
+            <p>
+              Integrating multiscale and system-level modeling with high-fidelity component models to
+              build predictive simulation environments for advanced reactor design and operation.
+            </p>
+          </a>
+
+          <a class="research-card" href="research/research-direction4.html" aria-label="Learn more about HPC-based particle method development">
+            <div class="research-visual visual-particles" aria-hidden="true"></div>
+            <span class="research-number">04 · HPC PARTICLE METHODS</span>
+            <h3>HPC-Based Particle Method Development</h3>
+            <p>
+              Developing scalable smoothed particle hydrodynamics (SPH), peridynamics (PD), and discrete
+              element methods (DEM), together with robust coupling strategies among these formulations.
+            </p>
+          </a>
         </div>
       </div>
     </section>
@@ -1691,28 +1699,22 @@
         <div class="news-carousel">
           <div class="news-track" tabindex="0" aria-label="News carousel">
             <article class="highlight">
-              <div class="highlight-graphic coming-soon-graphic" aria-hidden="true">
-                <div class="core-lines"></div>
-                <div class="core-ring"></div>
-                <span>COMING SOON</span>
+              <div class="highlight-graphic news-image news-photo">
+                <img src="news/news2.jpg" alt="Hee Sang Yoo with colleagues at CEA Cadarache">
               </div>
               <div class="highlight-copy">
-                <p class="section-kicker">Upcoming Update</p>
-                <h3>Coming Soon</h3>
-                <p>New research and academic updates will be shared here.</p>
-              </div>
-            </article>
-
-            <article class="highlight">
-              <div class="highlight-graphic coming-soon-graphic" aria-hidden="true">
-                <div class="core-lines"></div>
-                <div class="core-ring"></div>
-                <span>COMING SOON</span>
-              </div>
-              <div class="highlight-copy">
-                <p class="section-kicker">Upcoming Update</p>
-                <h3>Coming Soon</h3>
-                <p>New research and academic updates will be shared here.</p>
+                <p class="section-kicker">August 2026 · CEA Cadarache, France</p>
+                <h3>GOODBYE, CEA!</h3>
+                <p>
+                  It was an honor to be part of CEA IRESNE at CEA Cadarache. I was fortunate to meet
+                  wonderful colleagues, learn a great deal from them, and grow as a researcher throughout this chapter.
+                </p>
+                <ul class="tag-list">
+                  <li>CEA Cadarache</li>
+                  <li>CEA IRESNE</li>
+                  <li>France</li>
+                  <li>Research Journey</li>
+                </ul>
               </div>
             </article>
 
@@ -1721,7 +1723,7 @@
                 <img src="news/news1.webp" alt="Hee Sang Yoo presenting at PHYSOR 2026 in Turin">
               </div>
               <div class="highlight-copy">
-                <p class="section-kicker">PHYSOR 2026 · Turin, Italy</p>
+                <p class="section-kicker">April 2026 · PHYSOR 2026 · Turin, Italy</p>
                 <h3>I PRESENTED OUR WORK AT PHYSOR 2026 IN TURIN!</h3>
                 <p>
                   I was pleased to present “Multiphysics Coupling of APOLLO3 and CATHARE3 via the C3PO
@@ -1734,6 +1736,19 @@
                   <li>CEA IRESNE</li>
                   <li>Reactor Multiphysics</li>
                 </ul>
+              </div>
+            </article>
+
+            <article class="highlight">
+              <div class="highlight-graphic coming-soon-graphic" aria-hidden="true">
+                <div class="core-lines"></div>
+                <div class="core-ring"></div>
+                <span>COMING SOON</span>
+              </div>
+              <div class="highlight-copy">
+                <p class="section-kicker">Upcoming Update</p>
+                <h3>Coming Soon</h3>
+                <p>New research and academic updates will be shared here.</p>
               </div>
             </article>
           </div>
@@ -1847,38 +1862,56 @@
 
             <article class="featured-paper">
               <div class="featured-paper-page">
-                <img src="figure/publications/highlights/j15-first-page.png" alt="First page of the International Communications in Heat and Mass Transfer paper">
+                <img src="figure/publications/highlights/j12-first-page.png" alt="First page of the Computational Mechanics paper">
               </div>
               <div class="featured-paper-meta">
-                <span>J15 - 2026</span>
-                <h4>Effects of Surface Characteristics of Oxidized Zircaloy-4</h4>
-                <p class="featured-paper-summary">The study reveals how oxide-layer thickness, wettability, and crack orientation govern pool-boiling heat transfer on Zircaloy-4.</p>
-                <a href="https://doi.org/10.1016/j.icheatmasstransfer.2026.111277" target="_blank" rel="noopener">DOI &nearr;</a>
+                <span>J12 - 2025</span>
+                <h4>Coupled EISPH–OSPD Framework for Hydroelastic Response and Brittle Fracture</h4>
+                <p class="featured-paper-summary">A unified particle framework couples fluid dynamics, structural response, and brittle fracture for strongly interacting hydroelastic problems.</p>
+                <a href="https://doi.org/10.1007/s00466-025-02697-z" target="_blank" rel="noopener">DOI &nearr;</a>
               </div>
             </article>
 
             <article class="featured-paper">
               <div class="featured-paper-page">
-                <img src="figure/publications/highlights/j14-first-page.png" alt="First page of the Advances in Engineering Software paper">
+                <img src="figure/publications/highlights/j9-first-page.png" alt="First page of the Nuclear Engineering and Technology paper">
               </div>
               <div class="featured-paper-meta">
-                <span>J14 - 2026</span>
-                <h4>Dynamic Load Balancing for Multi-GPU SPH</h4>
-                <p class="featured-paper-summary">A two-dimensional staggered domain-decomposition strategy improves load balance and scalability for large multi-GPU SPH simulations.</p>
-                <a href="https://doi.org/10.1016/j.advengsoft.2026.104123" target="_blank" rel="noopener">DOI &nearr;</a>
+                <span>J9 - 2024</span>
+                <h4>Numerical Investigation of Molten-Corium Spreading Using EISPH</h4>
+                <p class="featured-paper-summary">The EISPH method resolves the highly viscous free-surface dynamics and heat transfer that govern molten-corium spreading.</p>
+                <a href="https://doi.org/10.1016/j.net.2024.11.003" target="_blank" rel="noopener">DOI &nearr;</a>
+              </div>
+            </article>
+
+            <article class="featured-paper">
+              <div class="featured-paper-page">
+                <img src="figure/publications/highlights/j6-first-page.png" alt="First page of the Journal of Computational Physics paper">
+              </div>
+              <div class="featured-paper-meta">
+                <span>J6 - 2024</span>
+                <h4>Comparative Study of SPH Methods for Multiphase Flow with High Density Difference</h4>
+                <p class="featured-paper-summary">WCSPH, EISPH, and EICSPH are systematically compared to identify their accuracy and stability across challenging high-density-ratio multiphase flows.</p>
+                <a href="https://doi.org/10.1016/j.jcp.2024.112930" target="_blank" rel="noopener">DOI &nearr;</a>
               </div>
             </article>
           </div>
-          <p class="featured-publications-status" aria-live="polite"><span class="featured-current">1</span> / 3</p>
+          <p class="featured-publications-status" aria-live="polite"><span class="featured-current">1</span> / 4</p>
         </div>
 
         <h3 class="publication-subheading" style="margin: 0 0 24px;">Journal Publications</h3>
         <ol class="publication-list">
           <li class="publication-item with-figure">
-            <div class="publication-year"><span class="publication-number">15</span>2026</div>
+            <div class="publication-year"><span class="publication-number">16</span>2026</div>
             <div class="publication-figure"><img src="figure/publications/j15.jpg" alt="Pool boiling regimes and heat-flux curve"></div>
-            <div><p class="publication-title">From Water to Dielectric Fluids: Pool Boiling Research under Pressure and Subcooling for Next-Generation Cooling</p><p class="publication-authors">Sung Jin Kim, Hyunjin Yong, <strong>Hee Sang Yoo</strong>, and Il Woong Park</p><p class="publication-journal"><em>Renewable and Sustainable Energy Reviews</em>, 116852</p></div>
+            <div><p class="publication-title">From Water to Dielectric Fluids: Pool Boiling Research under Pressure and Subcooling for Next-Generation Cooling</p><p class="publication-authors">Sung Jin Kim, Hyunjin Yong, <strong>Hee Sang Yoo</strong>, and Il Woong Park</p><p class="publication-journal"><em>Renewable and Sustainable Energy Reviews</em>, 239, 116852<br><strong>2024 JCR: Top 2.4% · IF 16.3</strong></p></div>
             <a class="publication-link" href="https://doi.org/10.1016/j.rser.2026.116852" target="_blank" rel="noopener">DOI ↗</a>
+          </li>
+          <li class="publication-item with-figure">
+            <div class="publication-year"><span class="publication-number">15</span>2026</div>
+            <div class="publication-figure"><img src="figure/publications/highlights/j15-first-page.png" alt="First page of the oxidized Zircaloy-4 pool-boiling paper"></div>
+            <div><p class="publication-title">Effects of Surface Characteristics of Oxidized Zircaloy-4 on Pool Boiling Heat Transfer</p><p class="publication-authors">Sung Jin Kim, Sangmin Song, Junbeom Song, Il Woong Park, <strong>Hee Sang Yoo</strong>, and Hyun Sun Park</p><p class="publication-journal"><em>International Communications in Heat and Mass Transfer</em>, 176, 111277</p></div>
+            <a class="publication-link" href="https://doi.org/10.1016/j.icheatmasstransfer.2026.111277" target="_blank" rel="noopener">DOI ↗</a>
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">14</span>2026</div>
@@ -1888,7 +1921,7 @@
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">13</span>2026</div>
-            <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
+            <div class="publication-figure publication-placeholder"><span>COMING SOON</span></div>
             <div><p class="publication-title">A Steady-State Eulerian Smoothed Particle Hydrodynamics (SPH) Approach for Incompressible Flow and Heat Transfer Using the Semi-Implicit Method for Pressure-Linked Equations (SIMPLE) Algorithm</p><p class="publication-authors">Tae Hwan Kim, <strong>Hee Sang Yoo</strong>, Jin-Woo Kim, and Eung Soo Kim</p><p class="publication-journal"><em>International Journal for Numerical Methods in Engineering</em>, 127(1), e70255</p></div>
             <a class="publication-link" href="https://doi.org/10.1002/nme.70255" target="_blank" rel="noopener">DOI ↗</a>
           </li>
@@ -1924,7 +1957,7 @@
           </li>
           <li class="publication-item with-figure">
             <div class="publication-year"><span class="publication-number">7</span>2024</div>
-            <div class="publication-figure publication-placeholder"><span>IMAGE</span></div>
+            <div class="publication-figure publication-placeholder"><span>COMING SOON</span></div>
             <div><p class="publication-title">Dynamic Load Balancing of Multi-GPU Parallelization for VULCANO VE-U7 Corium Spreading Analysis Using SOPHIA</p><p class="publication-authors">Yelyn Ahn, <strong>Hee Sang Yoo</strong>, Namjae Choi, and Eung Soo Kim</p><p class="publication-journal"><em>Nuclear Technology</em>, 211(6), 1316–1336</p></div>
             <a class="publication-link" href="https://doi.org/10.1080/00295450.2024.2397617" target="_blank" rel="noopener">DOI ↗</a>
           </li>
@@ -2148,15 +2181,31 @@
     });
 
     function resolvePublicationMedia(container, number) {
-      const existingImage = container.querySelector('img');
       const label = `Publication J${number} media`;
       const base = `figure/publications/j${number}`;
-      const extensions = ['gif', 'png', 'jpg', 'jpeg', 'webp'];
+      const candidates = [
+        { extension: 'png', type: 'image' },
+        { extension: 'jpg', type: 'image' },
+        { extension: 'jpeg', type: 'image' },
+        { extension: 'mp4', type: 'video' },
+        { extension: 'gif', type: 'image' },
+        { extension: 'webp', type: 'image' }
+      ];
 
-      function tryImage(index) {
-        if (index >= extensions.length) {
+      const placeholder = document.createElement('span');
+      placeholder.textContent = 'COMING SOON';
+      container.classList.add('publication-placeholder');
+      container.replaceChildren(placeholder);
+
+      function tryMedia(index) {
+        if (index >= candidates.length) return;
+
+        const candidate = candidates[index];
+        const source = `${base}.${candidate.extension}`;
+
+        if (candidate.type === 'video') {
           const video = document.createElement('video');
-          video.src = `${base}.mp4`;
+          video.src = source;
           video.autoplay = true;
           video.muted = true;
           video.loop = true;
@@ -2168,6 +2217,8 @@
             bindExpandableMedia(video, label);
             video.play().catch(() => {});
           }, { once: true });
+          video.addEventListener('error', () => tryMedia(index + 1), { once: true });
+          video.load();
           return;
         }
 
@@ -2180,20 +2231,11 @@
           container.replaceChildren(image);
           bindExpandableMedia(image, label);
         };
-        probe.onerror = () => tryImage(index + 1);
-        probe.src = `${base}.${extensions[index]}`;
+        probe.onerror = () => tryMedia(index + 1);
+        probe.src = source;
       }
 
-      if (existingImage) {
-        if (existingImage.complete) {
-          if (existingImage.naturalWidth > 0) return;
-          tryImage(0);
-        } else {
-          existingImage.addEventListener('error', () => tryImage(0), { once: true });
-        }
-        return;
-      }
-      tryImage(0);
+      tryMedia(0);
     }
 
     document.querySelectorAll('.publication-list .publication-item.with-figure').forEach((item) => {
